@@ -7,6 +7,8 @@
 
 #include "Game.hpp"
 
+
+
 int main(int argc, char **argv)
 {
     Game game;
@@ -14,6 +16,7 @@ int main(int argc, char **argv)
     (void) argc;
     (void) argv;
 
+    game.playMusic();
     while (game.isWindowOpen()) {
         event = game.getKeyEvent();
         game.clearWindow();
