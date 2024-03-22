@@ -14,6 +14,9 @@ Game::Game()
     if (!isWindowOpen())
         throw Error("Failed to create window");
     _event = sf::Event();
+    if (!_musicGame.openFromFile("assets/music/music_gameplay.wav"))
+        throw Error("Failed to load Music");
+    _musicGame.setLoop(true);
 }
 
 Game::~Game()
@@ -55,4 +58,9 @@ int Game::getKeyEvent()
 void Game::DisplayWindow()
 {
     _window.display();
+}
+
+void Game::playMusic()
+{
+    _musicGame.play();
 }
