@@ -44,9 +44,22 @@ int Game::getKeyEvent()
         if (_event.type == sf::Event::Closed)
             closeWindow();
         if (_event.type == sf::Event::KeyPressed)
-            return _event.key.code;
+            for (auto& binds : _keyFunctions) {
+                if (binds.first == _event.key.code)
+                    binds.second();
+            }
     }
     return -1;
+}
+
+void Game::handleEvents()
+{
+    int event = getKeyEvent();
+
+    for (const auto& map : _keyFunctions) {
+        if (map.first == event)
+            map.second();
+    }
 }
 
 void Game::DisplayWindow()

@@ -9,6 +9,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include <unordered_map>
+#include <functional>
 
 class Game {
     public:
@@ -22,6 +24,7 @@ class Game {
 
         //Events
         int getKeyEvent();
+        void handleEvents();
 
         //Display
         void DisplayWindow();
@@ -43,4 +46,8 @@ class Game {
     private:
         sf::RenderWindow _window;
         sf::Event _event;
+
+        std::unordered_map<sf::Keyboard::Key, std::function<void()>> _keyFunctions = {
+            {sf::Keyboard::Escape, [this](){closeWindow();}}
+        };
 };

@@ -10,12 +10,11 @@
 int main(int argc, char **argv)
 {
     Game game;
-    int event;
     (void) argc;
     (void) argv;
-    (void) event;
+
     while (game.isWindowOpen()) {
-        event = game.getKeyEvent();
+        game.handleEvents();
         game.clearWindow();
         game.DisplayWindow();
     }
