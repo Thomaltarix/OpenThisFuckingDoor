@@ -10,6 +10,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <vector>
+#include <unordered_map>
 
 class AEntity {
     public:
@@ -24,7 +25,9 @@ class AEntity {
         // Getters
         std::pair<float, float> getPos() const {return _pos;}
         std::pair<float, float> getSize() const {return _size;}
-        std::vector<sf::Texture> getTextures() const {return _textures;}
+
+        void display(sf::RenderWindow window);
+
         class Error : public std::exception {
             public:
                 Error (const std::string &msg)
@@ -42,6 +45,6 @@ class AEntity {
     protected:
         std::pair<float, float> _pos;
         std::pair<float, float> _size;
-        std::vector<sf::Texture> _textures;
+        std::unordered_map<std::string, sf::Texture> _textures;
     private:
 };
