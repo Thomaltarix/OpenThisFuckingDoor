@@ -13,8 +13,8 @@
 
 class AEntity {
     public:
-        AEntity();
-        ~AEntity();
+        AEntity() = default;
+        ~AEntity() = default;
 
         // Setters
         void setPos(float x, float y) {_pos = std::pair<float, float>(x, y);}

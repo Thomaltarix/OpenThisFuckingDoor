@@ -6,13 +6,6 @@
 */
 
 #include "AEntity.hpp"
-AEntity::AEntity()
-{
-}
-
-AEntity::AEntity()
-{
-}
 
 void AEntity::setTextures(std::vector<std::string> strings)
 {
