@@ -52,16 +52,6 @@ int Game::getKeyEvent()
     return -1;
 }
 
-void Game::handleEvents()
-{
-    int event = getKeyEvent();
-
-    for (const auto& map : _keyFunctions) {
-        if (map.first == event)
-            map.second();
-    }
-}
-
 void Game::DisplayWindow()
 {
     _window.display();

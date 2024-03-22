@@ -10,13 +10,15 @@
 int main(int argc, char **argv)
 {
     Game game;
+    int event;
     (void) argc;
     (void) argv;
 
     while (game.isWindowOpen()) {
-        game.handleEvents();
+        event = game.getKeyEvent();
         game.clearWindow();
         game.DisplayWindow();
     }
+    (void) event;
     return 0;
 }
