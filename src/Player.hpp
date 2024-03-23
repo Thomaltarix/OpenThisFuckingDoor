@@ -20,6 +20,7 @@ class Player : public Move {
         ~Player() = default;
 
     protected:
+        // Will be a map of items
         std::unordered_map<std::string, AEntity> _items;
     private:
 };
