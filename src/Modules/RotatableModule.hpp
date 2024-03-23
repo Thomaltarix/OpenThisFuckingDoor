@@ -12,8 +12,9 @@
 class RotatableModule : public Module {
     public:
         RotatableModule(GameObject *gameObject);
-        ~RotatableModule();
+        ~RotatableModule() = default;
 
+        void update(GameObject *gameObject, std::vector<GameObject*> gameObjects) override {(void) gameObject, (void) gameObjects;}
     protected:
     private:
 };
