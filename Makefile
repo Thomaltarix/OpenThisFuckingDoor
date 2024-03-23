@@ -7,6 +7,8 @@
 
 SRC			= 	src/main.cpp \
 				src/Game/Game.cpp \
+				src/Modules/HitboxModule.cpp \
+				src/Modules/MovementModule.cpp \
 
 CXX_OBJS			= $(SRC:.cpp=.o)
 
