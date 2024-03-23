@@ -28,6 +28,9 @@ class Game {
         int getKeyEvent();
         void handleEvents();
 
+        // Getter
+        sf::RenderWindow *getWindow() {return &_window;}
+
         //Display
         void DisplayWindow();
 
