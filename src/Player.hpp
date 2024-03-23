@@ -20,6 +20,6 @@ class Player : public Move {
         ~Player() = default;
 
     protected:
-        std::unordered_map<std::string, AEntity> _totems;
+        std::unordered_map<std::string, AEntity> _items;
     private:
 };
