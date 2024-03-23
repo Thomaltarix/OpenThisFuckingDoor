@@ -13,14 +13,13 @@
 #include <unordered_map>
 #include <AEntity.hpp>
 #include <Move.hpp>
+#include <GameObject.hpp>
 
-class Player : public Move {
+class Player : public GameObject {
     public:
-        Player() = default;
+        Player();
         ~Player() = default;
 
     protected:
-        // Will be a map of items
-        std::unordered_map<std::string, AEntity> _items;
     private:
 };
