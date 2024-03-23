@@ -13,7 +13,6 @@ int main(int argc, char **argv)
 {
     Game game;
     Menu menu(&game);
-    Button button(&game);
     int event;
     (void) argc;
     (void) argv;
@@ -22,7 +21,7 @@ int main(int argc, char **argv)
     while (game.isWindowOpen()) {
         event = game.getKeyEvent();
         game.clearWindow();
-        menu.DisplayMenu(&game, &button);
+        menu.displayMenu(&game);
         game.DisplayWindow();
     }
     (void) event;
