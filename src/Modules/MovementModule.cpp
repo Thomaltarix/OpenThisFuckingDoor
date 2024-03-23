@@ -11,7 +11,7 @@
 MovementModule::MovementModule(GameObject *gameObject)
 {
     if (gameObject->hasModule<MovementModule>())
-        throw std::runtime_error("GameObject already has a MovementModule!");
+        throw Error("GameObject already has a MovementModule!");
     if (gameObject->data.find("x") == gameObject->data.end())
         gameObject->data["x"] = double(0.0);
     if (gameObject->data.find("y") == gameObject->data.end())

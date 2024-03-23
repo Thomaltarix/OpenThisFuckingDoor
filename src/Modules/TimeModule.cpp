@@ -13,7 +13,7 @@
 TimeModule::TimeModule(GameObject *gameObject)
 {
     if (gameObject->hasModule<TimeModule>())
-        throw std::runtime_error("GameObject already has a TimeModule!");
+        throw Error("GameObject already has a TimeModule!");
     if (gameObject->data.find("clock") == gameObject->data.end())
         gameObject->data["clock"] = new sf::Clock();
 }

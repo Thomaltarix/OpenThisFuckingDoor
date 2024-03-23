@@ -16,7 +16,7 @@
 DisplayModule::DisplayModule(GameObject *gameObject)
 {
     if (gameObject->hasModule<DisplayModule>())
-        throw std::runtime_error("GameObject already has a DisplayModule!");
+        throw Error("GameObject already has a DisplayModule!");
     if (gameObject->data.find("texture") == gameObject->data.end())
         gameObject->data["texture"] = nullptr;
     if (gameObject->data.find("TextureSize") == gameObject->data.end())

@@ -11,7 +11,7 @@
 RotatableModule::RotatableModule(GameObject *gameObject)
 {
     if (gameObject->hasModule<RotatableModule>())
-        throw std::runtime_error("GameObject already has a RotatableModule!");
+        throw Error("GameObject already has a RotatableModule!");
     if (gameObject->data.find("direction") == gameObject->data.end())
         gameObject->data["direction"] = Direction(IDLE);
 }
