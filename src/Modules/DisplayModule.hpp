@@ -7,10 +7,9 @@
 
 #pragma once
 
-#include <AEntity.hpp>
 #include <GameObject.hpp>
 
-class DisplayModule : Module {
+class DisplayModule : public Module {
     public:
         DisplayModule(GameObject *gameObject);
         ~DisplayModule() = default;

@@ -21,8 +21,8 @@ DisplayModule::DisplayModule(GameObject *gameObject)
         gameObject->data["texture"] = nullptr;
     if (gameObject->data.find("TextureSize") == gameObject->data.end())
         gameObject->data["TextureSize"] = std::pair<int, int>(0, 0);
-    // if (gameObject->hasModule<TimeModule>() == false)
-    //     gameObject->addModule<TimeModule>();
+    if (gameObject->hasModule<TimeModule>() == false)
+        gameObject->addModule<TimeModule>();
 }
 
 void DisplayModule::update(GameObject *gameObject, std::vector<GameObject*> gameObjects)
