@@ -22,7 +22,7 @@ $(NAME): $(CXX_OBJS)
 	g++ -o $(NAME) $(CXX_OBJS) $(CXXFLAGS)
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(CXX_OBJS)
 
 fclean: clean
 	rm -f $(NAME)

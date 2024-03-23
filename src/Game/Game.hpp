@@ -29,6 +29,9 @@ class Game {
         //Display
         void DisplayWindow();
 
+        //Music
+        void playMusic();
+
         class Error : public std::exception {
             public:
                 Error (const std::string &msg)
@@ -46,6 +49,7 @@ class Game {
     private:
         sf::RenderWindow _window;
         sf::Event _event;
+        sf::Music _musicGame;
 
         std::unordered_map<sf::Keyboard::Key, std::function<void()>> _keyFunctions = {
             {sf::Keyboard::Escape, [this](){closeWindow();}}
