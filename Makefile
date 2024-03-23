@@ -9,6 +9,7 @@ SRC			= 	src/main.cpp \
 				src/Game/Game.cpp \
 				src/Modules/HitboxModule.cpp \
 				src/Modules/MovementModule.cpp \
+				src/Modules/CollisionModule.cpp \
 				src/Modules/DisplayModule.cpp \
 				src/Modules/TimeModule.cpp \
 				src/Modules/RotatableModule.cpp

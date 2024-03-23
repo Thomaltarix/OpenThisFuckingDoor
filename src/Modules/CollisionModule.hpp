@@ -9,13 +9,11 @@
 
 #include "../Game/GameObject.hpp"
 
-class HitboxModule : public Module {
+class CollisionModule : public Module {
 public:
-    HitboxModule(GameObject *gameObject);
-    ~HitboxModule() = default;
+    CollisionModule(GameObject *gameObject);
+    ~CollisionModule() = default;
 
-    bool contact(GameObject *gameObject, GameObject *otherObject);
     void update(GameObject *gameObject, std::vector<GameObject*> gameObjects) override {(void) gameObject, (void) gameObjects;};
 private:
-    double calculateDistance(GameObject *obj1, GameObject *obj2);
 };
