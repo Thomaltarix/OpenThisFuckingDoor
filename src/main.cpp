@@ -12,7 +12,7 @@
 int main(int argc, char **argv)
 {
     Game game;
-    Menu menu;
+    Menu menu(&game);
     Button button(&game);
     int event;
     (void) argc;

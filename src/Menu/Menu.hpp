@@ -16,11 +16,11 @@
 
 class Menu {
     public:
-        Menu();
+        Menu(Game *game);
 
         // title
-        void TitleMenu(Game game);
-        void TextMenu(Game game);
+        void TitleMenu(Game *game);
+        void TextMenu(Game *game);
         // Display menu
         void DisplayMenu(Game *game, Button *button);
 
