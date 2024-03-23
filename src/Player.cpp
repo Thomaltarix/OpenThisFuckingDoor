@@ -11,6 +11,5 @@
 
 Player::Player()
 {
-    addModule<MovementModule>();
-    addModule<HitboxModule>();
+    addModule<PlayerModule>();
 }
