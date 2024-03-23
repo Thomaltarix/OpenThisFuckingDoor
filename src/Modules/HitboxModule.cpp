@@ -6,6 +6,7 @@
 */
 
 #include "HitboxModule.hpp"
+#include "PositionModule.hpp"
 #include <cmath>
 #include <algorithm>
 
@@ -15,10 +16,8 @@ HitboxModule::HitboxModule(GameObject *gameObject)
         throw Error("GameObject already has a HitboxModule!");
     if (gameObject->data.find("size") == gameObject->data.end())
         gameObject->data["size"] = std::pair<int, int>(0, 0);
-    if (gameObject->data.find("x") == gameObject->data.end())
-        gameObject->data["x"] = double(0.0);
-    if (gameObject->data.find("y") == gameObject->data.end())
-        gameObject->data["y"] = double(0.0);
+    if (!gameObject->hasModule<PositionModule>())
+        gameObject->addModule<PositionModule>();
 }
 
 bool HitboxModule::contact(GameObject *gameObject, GameObject *otherObject)

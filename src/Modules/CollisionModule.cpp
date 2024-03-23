@@ -11,6 +11,8 @@
 
 CollisionModule::CollisionModule(GameObject *gameObject)
 {
+    if (gameObject->hasModule<CollisionModule>())
+        throw Error("GameObject already has a CollisionModule!");
     if (!gameObject->hasModule<HitboxModule>())
         gameObject->addModule<HitboxModule>();
 }
