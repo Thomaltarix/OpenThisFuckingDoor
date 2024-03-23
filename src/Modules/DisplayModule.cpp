@@ -36,5 +36,5 @@ void DisplayModule::update(GameObject *gameObject, std::vector<GameObject*> game
     else
         sprite.setTexture(textures[0], false);
     sprite.setPosition((sf::Vector2f){std::any_cast<float>(gameObject->data["x"]), std::any_cast<float>(gameObject->data["y"])});
-    getGame()->getWindow()->draw(sprite);
+    game.getWindow().draw(sprite);
 }

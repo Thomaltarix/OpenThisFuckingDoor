@@ -8,4 +8,4 @@
 #pragma once
 #include "Game.hpp"
 
-Game *getGame(void);
+extern Game game;

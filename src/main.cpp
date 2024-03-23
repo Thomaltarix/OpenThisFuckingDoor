@@ -5,26 +5,24 @@
 ** main
 */
 
+#include "GameMenu/GameMenu.hpp"
 #include "Game.hpp"
+#include "button.hpp"
 
-Game *getGame()
-{
-    static Game game;
-    return &game;
-}
+Game game;
 
 int main(int argc, char **argv)
 {
-    Game *game = getGame();
     int event;
     (void) argc;
     (void) argv;
 
-    game->playMusic();
-    while (game->isWindowOpen()) {
-        event = game->getKeyEvent();
-        game->clearWindow();
-        game->DisplayWindow();
+    game.playMusic();
+    while (game.isWindowOpen()) {
+        event = game.getKeyEvent();
+        game.clearWindow();
+        game.getGameMenu()->displayGameMenu();
+        game.DisplayWindow();
     }
     (void) event;
     return 0;
