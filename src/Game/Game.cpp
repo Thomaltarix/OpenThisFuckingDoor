@@ -65,19 +65,24 @@ int Game::getKeyEvent()
 void Game::handleMouseEvents()
 {
     sf::Vector2f mousePos = game.getWindow().mapPixelToCoords(sf::Mouse::getPosition(game.getWindow()));
+    sf::IntRect rect;
 
     for (auto& button :game.getGameMenu()->getbutton()) {
         if (button->getSprite()->getGlobalBounds().contains(mousePos)) {
             if (button->getType() == button->DOOR) {
-                button->getSprite()->setTextureRect(sf::IntRect(72,0,72,66));
+                rect = sf::IntRect(72,0,72,66);
+                button->getSprite()->setTextureRect(rect);
             } else {
-                button->getSprite()->setTextureRect(sf::IntRect(0,128,500,128));
+                rect = sf::IntRect(0,128,500,128);
+                button->getSprite()->setTextureRect(rect);
             }
         } else {
             if (button->getType() == button->DOOR) {
-                button->getSprite()->setTextureRect(sf::IntRect(0,0,72,66));
+                rect = sf::IntRect(0,0,72,66);
+                button->getSprite()->setTextureRect(rect);
             } else {
-                button->getSprite()->setTextureRect(sf::IntRect(0,0,500,128));
+                rect = sf::IntRect(0,0,500,128);
+                button->getSprite()->setTextureRect(rect);
             }
         }
     }
