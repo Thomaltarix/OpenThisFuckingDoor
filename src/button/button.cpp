@@ -18,6 +18,7 @@ Button::Button(std::string path, std::pair<float, float> pos, std::pair<float, f
     } else {
         _sprite.setTextureRect(sf::IntRect(0,0,500,128));
     }
+    _type = type;
     _sprite.setPosition((sf::Vector2f) {pos.first, pos.second});
     _sprite.scale((sf::Vector2f) {size.first, size.second});
 }

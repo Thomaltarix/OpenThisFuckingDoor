@@ -22,7 +22,7 @@ class Button {
         Button(std::string path, std::pair<float, float> pos, std::pair<float, float> size, ButtonType type);
 
         sf::Sprite *getSprite() { return &_sprite;}
-        enum ButtonType getType() {return type;}
+        enum ButtonType getType() {return _type;}
         class Error : public std::exception {
             public:
                 Error (const std::string &msg)
@@ -42,5 +42,5 @@ class Button {
         sf::Vector2f _pos;
         sf::Vector2f _size;
         sf::Sprite _sprite;
-        enum ButtonType type;
+        enum ButtonType _type;
 };
