@@ -21,7 +21,8 @@ class PNJ : public Move {
 
         // Setters
         void setAnchor(float x, float y) {_anchor = std::pair<float, float>(x, y);}
-        void setDialgos(std::vector<std::string> dialogs) {_dialogs = dialogs;}
+        void setDialogs(std::vector<std::string> dialogs) {_dialogs = dialogs;}
+        void addDialog(std::string str) {_dialogs.push_back(str);}
 
         // Getters
         std::pair<float, float> getAnchor(void) {return _anchor;}
