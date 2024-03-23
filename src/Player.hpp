@@ -12,8 +12,9 @@
 #include <vector>
 #include <unordered_map>
 #include <AEntity.hpp>
+#include <Move.hpp>
 
-class Player {
+class Player : public Move {
     public:
         Player() = default;
         ~Player() = default;
