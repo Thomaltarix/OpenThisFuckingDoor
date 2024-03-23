@@ -7,11 +7,10 @@
 
 #include "Game.hpp"
 
-
+Game game;
 
 int main(int argc, char **argv)
 {
-    Game game;
     int event;
     (void) argc;
     (void) argv;

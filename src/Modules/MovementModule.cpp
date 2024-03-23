@@ -8,7 +8,7 @@
 #include "MovementModule.hpp"
 #include <cmath>
 
-MovementModule::MovementModule(GameObject *gameObject) : directionX(0.0), directionY(0.0)
+MovementModule::MovementModule(GameObject *gameObject)
 {
     if (gameObject->hasModule<MovementModule>())
         throw std::runtime_error("GameObject already has a MovementModule!");
@@ -16,23 +16,34 @@ MovementModule::MovementModule(GameObject *gameObject) : directionX(0.0), direct
         gameObject->data["x"] = double(0.0);
     if (gameObject->data.find("y") == gameObject->data.end())
         gameObject->data["y"] = double(0.0);
+    if (gameObject->data.find("direction") == gameObject->data.end())
+        gameObject->data["direction"] = Direction(IDLE);
+    if (gameObject->data.find("speed") == gameObject->data.end())
+        gameObject->data["speed"] = int(0);
 }
 
-void MovementModule::setDirection(double x, double y)
+void MovementModule::setDirection(GameObject *gameObject, Direction direction)
 {
-    directionX = x;
-    directionY = y;
+    gameObject->data["direction"] = direction;
+}
+
+void MovementModule::setSpeed(GameObject *gameObject, int speed)
+{
+    gameObject->data["speed"] = speed;
 }
 
 void MovementModule::update(GameObject *gameObject, std::vector<GameObject*> gameObjects)
 {
     (void) gameObjects;
-    double distance = std::sqrt(directionX * directionX + directionY * directionY);
 
-    if (distance > 1.0) { // Move only if sufficiently far away from target
-        double angle = std::atan2(directionY, directionX);
-        gameObject->data["x"] = std::any_cast<double>(gameObject->data["x"]) + std::cos(angle);
-        gameObject->data["y"] = std::any_cast<double>(gameObject->data["y"]) + std::sin(angle);
-        std::cout << "Moving GameObject..." << std::endl;
-    }
+    if (std::any_cast<Direction>(gameObject->data["direction"]) == IDLE)
+        return;
+    if (std::any_cast<Direction>(gameObject->data["direction"]) == UP)
+        gameObject->data["y"] = std::any_cast<double>(gameObject->data["y"]) - std::any_cast<int>(gameObject->data["speed"]);
+    if (std::any_cast<Direction>(gameObject->data["direction"]) == DOWN)
+        gameObject->data["y"] = std::any_cast<double>(gameObject->data["y"]) + std::any_cast<int>(gameObject->data["speed"]);
+    if (std::any_cast<Direction>(gameObject->data["direction"]) == LEFT)
+        gameObject->data["x"] = std::any_cast<double>(gameObject->data["x"]) - std::any_cast<int>(gameObject->data["speed"]);
+    if (std::any_cast<Direction>(gameObject->data["direction"]) == RIGHT)
+        gameObject->data["x"] = std::any_cast<double>(gameObject->data["x"]) + std::any_cast<int>(gameObject->data["speed"]);
 }
