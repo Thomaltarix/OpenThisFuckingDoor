@@ -23,7 +23,7 @@ std::pair<float, float> AHitbox::getHitboxPos()
     return (H_pos);
 }
 
-bool AHitbox::isTouched(AHitbox other)
+bool AHitbox::isTouched(AHitbox &other)
 {
     std::pair<float, float> my_pos = getHitboxPos();
     std::pair<float, float> other_pos = other.getHitboxPos();
