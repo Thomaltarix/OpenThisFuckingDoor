@@ -14,6 +14,7 @@
 #include <AEntity.hpp>
 #include <Move.hpp>
 #include <GameObject.hpp>
+#include <PlayerModule.hpp>
 
 class Player : public GameObject {
     public:
