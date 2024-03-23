@@ -19,3 +19,4 @@ public:
 private:
     static double calculateDistance(GameObject *obj1, GameObject *obj2);
 };
+

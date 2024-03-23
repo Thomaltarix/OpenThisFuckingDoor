@@ -28,3 +28,4 @@ void EventModule::update(GameObject *gameObject, std::vector<GameObject*> gameOb
         if (HitboxModule::contact(gameObject, other))
             std::any_cast<std::function<void(GameObject *, GameObject *)>>(gameObject->data["eventEffect"])(other, gameObject);
 }
+
