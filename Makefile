@@ -9,12 +9,14 @@ SRC			= 	src/main.cpp \
 				src/Game/Game.cpp \
 				src/Modules/HitboxModule.cpp \
 				src/Modules/MovementModule.cpp \
+				src/Modules/DisplayModule.cpp \
+				src/Modules/TimeModule.cpp
 
 CXX_OBJS			= $(SRC:.cpp=.o)
 
 NAME		= OpenTheFuckingDoor
 
-INCLUDE 	= -I./src/Game/ -I./src/
+INCLUDE 	= -I./src/Game/ -I./src/ -I./src/Modules
 GRAPHFLAG	= -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
 CXXFLAGS 	= -std=c++20 -Wall -Wextra -Werror -g $(INCLUDE) $(GRAPHFLAG)
 

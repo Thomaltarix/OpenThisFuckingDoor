@@ -58,5 +58,3 @@ class Game {
             {sf::Keyboard::Escape, [this](){closeWindow();}}
         };
 };
-
-// Game game;

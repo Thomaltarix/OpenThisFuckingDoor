@@ -10,12 +10,12 @@
 #include <AEntity.hpp>
 #include <GameObject.hpp>
 
-class TimeModule : Module {
-    public:
-        TimeModule(GameObject *gameObject);
-        ~TimeModule() = default;
+// class TimeModule : Module {
+//     public:
+//         TimeModule(GameObject *gameObject);
+//         ~TimeModule() = default;
 
-        void update(GameObject *gameObject, std::vector<GameObject*> gameObjects) override;
-    protected:
-    private:
-};
+//         void update(GameObject *gameObject, std::vector<GameObject*> gameObjects) override;
+//     protected:
+//     private:
+// };
