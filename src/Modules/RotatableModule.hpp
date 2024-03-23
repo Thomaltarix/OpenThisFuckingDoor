@@ -9,7 +9,7 @@
 
 #include <GameObject.hpp>
 
-class RotatableModule {
+class RotatableModule : public Module {
     public:
         RotatableModule(GameObject *gameObject);
         ~RotatableModule();
