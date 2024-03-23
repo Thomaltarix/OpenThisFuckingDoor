@@ -29,4 +29,9 @@ bool AHitbox::isTouched(AHitbox other)
     std::pair<float, float> other_pos = other.getHitboxPos();
     std::pair<float, float> my_size = getHitboxSize();
     std::pair<float, float> other_size = other.getHitboxSize();
+
+    if (other_pos.first >= my_pos.first + my_size.first && other_pos.first + other_size.first <= my_pos.first && other_pos.second >= my_pos.second + my_size.second && other_size.second + other_size.second <= my_pos.second){
+        return (false);
+    }
+    return (true);
 }
