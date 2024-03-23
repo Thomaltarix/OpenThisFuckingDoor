@@ -13,6 +13,7 @@ SRC			= 	src/main.cpp \
 				src/Modules/DisplayModule.cpp \
 				src/Modules/TimeModule.cpp \
 				src/Modules/RotatableModule.cpp \
+				src/Modules/PositionModule.cpp \
 				src/GameMenu/GameMenu.cpp \
 				src/button/button.cpp \
 
