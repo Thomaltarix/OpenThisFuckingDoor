@@ -6,16 +6,15 @@
 */
 
 #include "MovementModule.hpp"
+#include "PositionModule.hpp"
 #include <cmath>
 
 MovementModule::MovementModule(GameObject *gameObject)
 {
     if (gameObject->hasModule<MovementModule>())
         throw Error("GameObject already has a MovementModule!");
-    if (gameObject->data.find("x") == gameObject->data.end())
-        gameObject->data["x"] = double(0.0);
-    if (gameObject->data.find("y") == gameObject->data.end())
-        gameObject->data["y"] = double(0.0);
+    if (!gameObject->hasModule<PositionModule>())
+        gameObject->addModule<PositionModule>();
     if (gameObject->data.find("direction") == gameObject->data.end())
         gameObject->data["direction"] = Direction(IDLE);
     if (gameObject->data.find("speed") == gameObject->data.end())
