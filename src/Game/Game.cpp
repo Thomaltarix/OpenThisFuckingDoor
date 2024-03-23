@@ -56,13 +56,19 @@ int Game::getKeyEvent()
                     binds.second();
             }
         if (_event.type == sf::Event::MouseMoved) {
-            handleMouseEvents();
+            handleMouseOver();
+        }
+        if (_event.mouseButton.button == sf::Mouse::Left) {
+            handleMousePress();
+        }
+        if (_event.type == sf::Event::MouseButtonReleased) {
+            handleMouseReleased();
         }
     }
     return -1;
 }
 
-void Game::handleMouseEvents()
+void Game::handleMouseOver()
 {
     sf::Vector2f mousePos = game.getWindow().mapPixelToCoords(sf::Mouse::getPosition(game.getWindow()));
     sf::IntRect rect;
@@ -73,7 +79,7 @@ void Game::handleMouseEvents()
                 rect = sf::IntRect(72,0,72,66);
                 button->getSprite()->setTextureRect(rect);
             } else {
-                rect = sf::IntRect(0,128,500,128);
+                rect = sf::IntRect(0,133,500,133);
                 button->getSprite()->setTextureRect(rect);
             }
         } else {
@@ -84,6 +90,41 @@ void Game::handleMouseEvents()
                 rect = sf::IntRect(0,0,500,128);
                 button->getSprite()->setTextureRect(rect);
             }
+        }
+    }
+}
+
+void Game::handleMousePress()
+{
+    sf::Vector2f mousePos = game.getWindow().mapPixelToCoords(sf::Mouse::getPosition(game.getWindow()));
+    sf::IntRect rect;
+
+    for (auto& button :game.getGameMenu()->getbutton()) {
+        if (button->getSprite()->getGlobalBounds().contains(mousePos)) {
+            if (button->getType() == button->DOOR) {
+                rect = sf::IntRect(144,0,72,66);
+                button->getSprite()->setTextureRect(rect);
+                rect = sf::IntRect(216,0,72,66);
+                button->getSprite()->setTextureRect(rect);
+            } else {
+                rect = sf::IntRect(0,266,500,133);
+                button->getSprite()->setTextureRect(rect);
+            }
+        }
+    }
+}
+
+void Game::handleMouseReleased()
+{
+    sf::IntRect rect;
+
+    for (auto& button :game.getGameMenu()->getbutton()) {
+        if (button->getType() == button->DOOR) {
+            rect = sf::IntRect(0,0,72,66);
+            button->getSprite()->setTextureRect(rect);
+        } else {
+            rect = sf::IntRect(0,0,500,128);
+            button->getSprite()->setTextureRect(rect);
         }
     }
 }

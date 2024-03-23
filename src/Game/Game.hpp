@@ -26,7 +26,9 @@ class Game {
         //Events
         int getKeyEvent();
         void handleEvents();
-        void handleMouseEvents();
+        void handleMouseOver();
+        void handleMousePress();
+        void handleMouseReleased();
 
         // Getter
         sf::RenderWindow &getWindow() {return _window;}
