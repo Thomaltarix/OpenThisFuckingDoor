@@ -10,7 +10,7 @@
 EventModule::EventModule(GameObject *gameObject)
 {
     if (gameObject->hasModule<EventModule>())
-        throw std::runtime_error("GameObject already has a EventModule!");
+        throw Error("GameObject already has a EventModule!");
     if (gameObject->hasModule<HitboxModule>())
         gameObject->addModule<HitboxModule>();
     if (gameObject->data.find("eventEffect") == gameObject->data.end())

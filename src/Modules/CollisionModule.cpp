@@ -14,4 +14,3 @@ CollisionModule::CollisionModule(GameObject *gameObject)
     if (!gameObject->hasModule<HitboxModule>())
         gameObject->addModule<HitboxModule>();
 }
-
