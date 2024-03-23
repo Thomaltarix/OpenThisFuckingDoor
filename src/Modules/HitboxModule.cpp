@@ -11,7 +11,7 @@
 HitboxModule::HitboxModule(GameObject *gameObject)
 {
     if (gameObject->hasModule<HitboxModule>())
-        throw std::runtime_error("GameObject already has a HitboxModule!");
+        throw Error("GameObject already has a HitboxModule!");
     if (gameObject->data.find("x") == gameObject->data.end())
         gameObject->data["x"] = double(0.0);
     if (gameObject->data.find("y") == gameObject->data.end())
