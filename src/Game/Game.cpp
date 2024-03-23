@@ -6,6 +6,7 @@
 */
 
 #include "Game.hpp"
+#include "button.hpp"
 
 Game::Game()
 {
@@ -55,7 +56,10 @@ int Game::getKeyEvent()
             for (auto& binds : _keyFunctions) {
                 if (binds.first == _event.key.code)
                     binds.second();
-            }
+            }/*
+        if (_event.type == sf::Event::MouseButtonPressed) {
+            handleMouseEvents(_event.mouseButton.button);
+        }*/
     }
     return -1;
 }
@@ -69,3 +73,21 @@ void Game::playMusic()
 {
     _musicGame.play();
 }
+/*
+void handleMouseEvents(sf::Mouse::Button event)
+{
+    sf::Vector2f mousePos = _window.mapPixelToCoords(sf::Mouse::getPosition(_window));
+
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+        if (_doorSprite.getGlobalBounds().contains(mousePos)) {
+
+        } else if (_optionSprite.getGlobalBounds().contains(mousePos)) {
+
+        } else if (_creditSprite.getGlobalBounds().contains(mousePos)) {
+
+        } else if (_leaveSprite.getGlobalBounds().contains(mousePos)) {
+
+        }
+    }
+}
+*/

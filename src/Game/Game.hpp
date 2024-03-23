@@ -11,6 +11,7 @@
 #include <SFML/Audio.hpp>
 #include <unordered_map>
 #include <functional>
+#include "Menu.hpp"
 
 class Game {
     public:
@@ -51,8 +52,10 @@ class Game {
         sf::RenderWindow _window;
         sf::Event _event;
         sf::Music _musicGame;
+        Menu menu;
 
         std::unordered_map<sf::Keyboard::Key, std::function<void()>> _keyFunctions = {
             {sf::Keyboard::Escape, [this](){closeWindow();}}
         };
+        void handleMouseEvents(sf::Mouse::Button event);
 };

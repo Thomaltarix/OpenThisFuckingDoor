@@ -19,11 +19,12 @@ class Menu {
         Menu(Game *game);
 
         // title
-        void TitleMenu(Game *game);
-        void TextMenu(Game *game);
+        void titleMenu(Game *game);
+        void textMenu(Game *game);
         // Display menu
-        void DisplayMenu(Game *game, Button *button);
+        void displayMenu(Game *game);
 
+        void addButton(std::string path, std::pair<float, float> pos, std::pair<float, float> size, Button::ButtonType type);
         class Error : public std::exception {
             public:
                 Error (const std::string &msg)
@@ -42,4 +43,5 @@ class Menu {
         sf::Font _fontText;
         sf::Text _textJouer;
         sf::Text _textTitle;
+        std::vector<Button *> _buttons;
 };

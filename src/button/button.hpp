@@ -15,19 +15,14 @@
 
 class Button {
     public:
-        Button(Game *game);
+        enum ButtonType {
+            DOOR,
+            BUTTON,
+        };
 
-        //button
-        void DoorBouton(Game *game);
-        void OptionButton(Game *game);
-        void CreditButton(Game *game);
-        void LeaveButton(Game *game);
+        Button(std::string path, std::pair<float, float> pos, std::pair<float, float> size, ButtonType type);
 
-        //getsprite
-        sf::Sprite GetDoorSprite();
-        sf::Sprite GetOptionSprite();
-        sf::Sprite GetCreditSprite();
-        sf::Sprite GetLeaveSprite();
+        sf::Sprite getSprite() { return _sprite;}
 
         class Error : public std::exception {
             public:
@@ -44,6 +39,8 @@ class Button {
                 std::string _msg;
         };
     private:
-        sf::Texture _doorTexture, _optionTexture, _creditTexture, _leaveTexture;
-        sf::Sprite _doorSprite, _optionSprite, _creditSprite, _leaveSprite;
+        sf::Texture _texture;
+        std::pair<float, float> _pos;
+        std::pair<float, float> _size;
+        sf::Sprite _sprite;
 };
