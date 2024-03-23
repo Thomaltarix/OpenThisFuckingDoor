@@ -6,6 +6,7 @@
 */
 
 #include "button.hpp"
+#include <iostream>
 
 Button::Button(std::string path, std::pair<float, float> pos, std::pair<float, float> size, ButtonType type)
 {
@@ -13,9 +14,10 @@ Button::Button(std::string path, std::pair<float, float> pos, std::pair<float, f
         throw Error("Failed to load image");
     _sprite.setTexture(_texture);
     if (type == DOOR) {
-        _sprite.setTextureRect(sf::IntRect(0,0,80,66));
+        _sprite.setTextureRect(sf::IntRect(0,0,72,66));
+    } else {
+        _sprite.setTextureRect(sf::IntRect(0,0,500,128));
     }
-    if (type == BUTTON) {
-        _sprite.setTextureRect(sf::IntRect(0,0,500,150));
-    }
+    _sprite.setPosition((sf::Vector2f) {pos.first, pos.second});
+    _sprite.scale((sf::Vector2f) {size.first, size.second});
 }

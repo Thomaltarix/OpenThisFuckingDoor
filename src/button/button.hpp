@@ -11,7 +11,6 @@
 #include <SFML/Audio.hpp>
 #include <unordered_map>
 #include <functional>
-#include "Game.hpp"
 
 class Button {
     public:
@@ -22,8 +21,8 @@ class Button {
 
         Button(std::string path, std::pair<float, float> pos, std::pair<float, float> size, ButtonType type);
 
-        sf::Sprite getSprite() { return _sprite;}
-
+        sf::Sprite *getSprite() { return &_sprite;}
+        enum ButtonType getType() {return type;}
         class Error : public std::exception {
             public:
                 Error (const std::string &msg)
@@ -40,7 +39,8 @@ class Button {
         };
     private:
         sf::Texture _texture;
-        std::pair<float, float> _pos;
-        std::pair<float, float> _size;
+        sf::Vector2f _pos;
+        sf::Vector2f _size;
         sf::Sprite _sprite;
+        enum ButtonType type;
 };
