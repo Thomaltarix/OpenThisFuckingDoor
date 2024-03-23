@@ -7,7 +7,6 @@
 
 #include "../Game/GameObject.hpp"
 #include "HitboxModule.hpp"
-#include "HitboxModule.cpp"
 #include "functional"
 
 class EventModule : public Module {
