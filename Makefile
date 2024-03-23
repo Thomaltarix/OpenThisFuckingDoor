@@ -10,7 +10,8 @@ SRC			= 	src/main.cpp \
 				src/Modules/HitboxModule.cpp \
 				src/Modules/MovementModule.cpp \
 				src/Modules/DisplayModule.cpp \
-				src/Modules/TimeModule.cpp
+				src/Modules/TimeModule.cpp \
+				src/Modules/RotatableModule.cpp
 
 CXX_OBJS			= $(SRC:.cpp=.o)
 
