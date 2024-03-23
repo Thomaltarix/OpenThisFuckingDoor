@@ -7,6 +7,10 @@
 
 #pragma once
 
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <SFML/System.hpp>
+
 class Move : public Hitbox {
     public:
         Move() = default;
@@ -17,6 +21,12 @@ class Move : public Hitbox {
 
         // Getters
         float getSpeeed() {return _speed;}
+
+        // Move metho
+        void moveRight(void);
+        void moveLeft(void);
+        void moveUp(void);
+        void moveDown(void);
     protected:
         float _speed;
     private:
