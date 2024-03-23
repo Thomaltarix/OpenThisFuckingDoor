@@ -13,6 +13,7 @@ int main(int argc, char **argv)
 {
     Game game;
     Menu menu;
+
     int event;
     (void) argc;
     (void) argv;
