@@ -55,14 +55,11 @@ int Game::getKeyEvent()
                 if (binds.first == _event.key.code)
                     binds.second();
             }
-        if (_event.type == sf::Event::MouseMoved) {
-            handleMouseOver();
-        }
-        if (_event.mouseButton.button == sf::Mouse::Left) {
-            handleMousePress();
-        }
         if (_event.type == sf::Event::MouseButtonReleased) {
             handleMouseReleased();
+        }
+        if (_event.type == sf::Event::MouseMoved) {
+            handleMouseOver();
         }
     }
     return -1;
