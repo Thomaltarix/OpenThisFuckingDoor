@@ -10,8 +10,9 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/System.hpp>
+#include <AHitbox.hpp>
 
-class Move : public Hitbox {
+class Move : public AHitbox {
     public:
         Move() = default;
         ~Move() = default;
