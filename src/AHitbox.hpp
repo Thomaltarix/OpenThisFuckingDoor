@@ -13,6 +13,7 @@ public:
     AHitbox(float x, float y);
     ~AHitbox() = default;
     
+    std::pair<float, float> getHitboxSize() {return (_hitboxSize);}
     void setSize(float x, float y) {_hitboxSize = std::pair<float, float>(x, y);}
     bool isTouched(AHitbox &other);
     std::pair<float, float> getHitboxPos();
