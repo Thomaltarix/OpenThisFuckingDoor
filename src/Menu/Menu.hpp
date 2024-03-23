@@ -11,18 +11,18 @@
 #include <SFML/Audio.hpp>
 #include <unordered_map>
 #include <functional>
-#include "Game.hpp"
 #include "button.hpp"
+#include <iostream>
 
 class Menu {
     public:
-        Menu(Game *game);
+        Menu();
 
         // title
-        void titleMenu(Game *game);
-        void textMenu(Game *game);
+        void titleMenu();
+        void textMenu();
         // Display menu
-        void displayMenu(Game *game);
+        void displayMenu();
 
         void addButton(std::string path, std::pair<float, float> pos, std::pair<float, float> size, Button::ButtonType type);
         class Error : public std::exception {

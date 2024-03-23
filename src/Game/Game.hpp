@@ -52,7 +52,7 @@ class Game {
         sf::RenderWindow _window;
         sf::Event _event;
         sf::Music _musicGame;
-        Menu menu;
+        Menu *menu;
 
         std::unordered_map<sf::Keyboard::Key, std::function<void()>> _keyFunctions = {
             {sf::Keyboard::Escape, [this](){closeWindow();}}
