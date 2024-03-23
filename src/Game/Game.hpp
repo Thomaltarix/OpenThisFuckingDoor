@@ -21,6 +21,7 @@ class Game {
         bool isWindowOpen() const;
         void closeWindow();
         void clearWindow();
+        sf::RenderWindow &getWindow();
 
         //Events
         int getKeyEvent();

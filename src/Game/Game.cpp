@@ -41,6 +41,11 @@ void Game::clearWindow()
     _window.clear();
 }
 
+sf::RenderWindow &Game::getWindow()
+{
+    return _window;
+}
+
 int Game::getKeyEvent()
 {
     while (_window.pollEvent(_event)) {

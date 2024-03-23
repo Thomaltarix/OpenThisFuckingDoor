@@ -6,12 +6,14 @@
 */
 
 #include "Game.hpp"
-
-
+#include "Menu.hpp"
+#include "button.hpp"
 
 int main(int argc, char **argv)
 {
     Game game;
+    Menu menu;
+    Button button(&game);
     int event;
     (void) argc;
     (void) argv;
@@ -20,6 +22,7 @@ int main(int argc, char **argv)
     while (game.isWindowOpen()) {
         event = game.getKeyEvent();
         game.clearWindow();
+        menu.DisplayMenu(&game, &button);
         game.DisplayWindow();
     }
     (void) event;
