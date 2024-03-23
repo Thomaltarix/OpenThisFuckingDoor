@@ -11,7 +11,7 @@ EventModule::EventModule(GameObject *gameObject)
 {
     if (gameObject->hasModule<EventModule>())
         throw Error("GameObject already has a EventModule!");
-    if (gameObject->hasModule<HitboxModule>())
+    if (!gameObject->hasModule<HitboxModule>())
         gameObject->addModule<HitboxModule>();
     if (gameObject->data.find("eventEffect") == gameObject->data.end())
         gameObject->data["eventEffect"] = NULL;
