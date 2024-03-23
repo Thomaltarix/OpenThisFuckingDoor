@@ -11,18 +11,18 @@ PlayerModule::PlayerModule(GameObject *gameObject)
 {
     if (gameObject->hasModule<PlayerModule>())
         throw Error("GameObject already has a PlayerModule!");
-    if (gameObject->hasModule<HitboxModule>())
+    if (!gameObject->hasModule<HitboxModule>())
         gameObject->addModule<HitboxModule>();
-    if (gameObject->hasModule<CollisionModule>())
+    if (!gameObject->hasModule<CollisionModule>())
         gameObject->addModule<CollisionModule>();
-    if (gameObject->hasModule<DisplayModule>())
+    if (!gameObject->hasModule<DisplayModule>())
         gameObject->addModule<DisplayModule>();
-    if (gameObject->hasModule<MovementModule>())
+    if (!gameObject->hasModule<MovementModule>())
         gameObject->addModule<MovementModule>();
-    if (gameObject->hasModule<PositionModule>())
+    if (!gameObject->hasModule<PositionModule>())
         gameObject->addModule<PositionModule>();
-    if (gameObject->hasModule<RotatableModule>())
+    if (!gameObject->hasModule<RotatableModule>())
         gameObject->addModule<RotatableModule>();
-    if (gameObject->hasModule<TimeModule>())
+    if (!gameObject->hasModule<TimeModule>())
         gameObject->addModule<TimeModule>();
 }
