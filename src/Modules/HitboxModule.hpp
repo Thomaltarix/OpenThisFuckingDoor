@@ -14,9 +14,9 @@ public:
     HitboxModule(GameObject *gameObject);
     ~HitboxModule() = default;
 
-    static bool contact(GameObject *gameObject, GameObject *otherObject);
     void update(GameObject *gameObject, std::vector<GameObject*> gameObjects) override {(void) gameObject, (void) gameObjects;};
-private:
+    static bool contact(GameObject *gameObject, GameObject *otherObject);
     static double calculateDistance(GameObject *obj1, GameObject *obj2);
+private:
 };
 
