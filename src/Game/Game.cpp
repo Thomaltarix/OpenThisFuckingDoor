@@ -47,6 +47,8 @@ void Game::clearWindow()
 
 int Game::getKeyEvent()
 {
+    static bool state = false;
+
     while (_window.pollEvent(_event)) {
         if (_event.type == sf::Event::Closed)
             closeWindow();
@@ -55,10 +57,15 @@ int Game::getKeyEvent()
                 if (binds.first == _event.key.code)
                     binds.second();
             }
+        if (_event.type == sf::Event::MouseButtonPressed) {
+            state = true;
+            handleMousePress();
+        }
         if (_event.type == sf::Event::MouseButtonReleased) {
+            state = false;
             handleMouseReleased();
         }
-        if (_event.type == sf::Event::MouseMoved) {
+        if (_event.type == sf::Event::MouseMoved && state != true) {
             handleMouseOver();
         }
     }
