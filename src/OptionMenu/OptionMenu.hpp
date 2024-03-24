@@ -18,15 +18,19 @@ class OptionMenu {
         OptionMenu();
 
         // title
-        //void textOptionMenu();
-
+        void textOptionMenu();
+        void textAudioMenu();
+        void textVolumeMenu();
         // display
         void displayOptionMenu();
 
         std::vector<Button *> getbutton() {return _buttons;}
         // button
         void addButton(std::string path, std::pair<float, float> pos, std::pair<float, float> size, Button::ButtonType type);
-        void setupButton(std::vector<Button *> _buttons);
+
+        //gettext
+        sf::Text *getTextVolume() {return &_volumeText;}
+
         class Error : public std::exception {
                 public:
                     Error (const std::string &msg)
@@ -45,6 +49,7 @@ class OptionMenu {
         sf::Font _optionFont;
         sf::Text _optionText;
         sf::Text _audioText;
+        sf::Text _volumeText;
         std::vector<Button *> _buttons;
 };
 
