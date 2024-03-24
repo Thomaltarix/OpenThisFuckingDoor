@@ -22,6 +22,7 @@ SRC			= 	src/main.cpp \
 				src/Ground.cpp \
 				src/OptionMenu/OptionMenu.cpp \
 				src/GameMap/GameMap.cpp \
+				src/Modules/InteractionModule.cpp \
 
 CXX_OBJS			= $(SRC:.cpp=.o)
 
