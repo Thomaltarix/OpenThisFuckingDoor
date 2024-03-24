@@ -11,7 +11,7 @@
 PositionModule::PositionModule(GameObject *gameObject)
 {
     if (gameObject->hasModule<PositionModule>())
-        throw std::runtime_error("GameObject already has a PositionModule!");
+        throw Error("GameObject already has a PositionModule!");
     if (gameObject->data.find("x") == gameObject->data.end())
         gameObject->data["x"] = int(0);
     if (gameObject->data.find("y") == gameObject->data.end())

@@ -9,16 +9,19 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include <AEntity.hpp>
+#include <GameObject.hpp>
 
-class Ground : public AEntity {
+class Ground : public GameObject {
     public:
-        Ground() = default;
+        Ground(sf::Texture, std::pair<int, int>, std::pair<int, int>);
         ~Ground() = default;
 
-        // Setters
 
         // Getters
+        sf::Texture getTexture(void) {return std::any_cast<sf::Texture>(data["texture"]);}
+        std::pair<int, int> getPos(void) {return std::pair<int, int>(std::any_cast<int>(data["x"]), std::any_cast<int>(data["y"]));}
+        std::pair<int, int> getSize(void) {return std::any_cast<std::pair<int, int>>(data["TextureSize"]);}
+
     protected:
     private:
 };
