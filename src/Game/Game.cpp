@@ -111,6 +111,8 @@ int Game::getKeyEvent()
                 game.getPlayer()->data["direction"] = UP;
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
                 game.getPlayer()->data["direction"] = DOWN;
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+                game.getPlayer()->data["interacting"] = true;
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
                 game.getPlayer()->data["direction"] = RIGHT;
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
@@ -260,6 +262,43 @@ void Game::handleMouseReleased()
 void Game::DisplayWindow()
 {
     _window.display();
+}
+
+void Game::setTotem(int totem)
+{
+    std::pair<Map, Map> map = _gameMap->getMap(_timeLine);
+    for (auto& row : map.second) {
+        for (auto& obj : row) {
+            // finds if the object has the data "pillar"
+            if (obj->data.find("pillar") != obj->data.end()) {
+                // if the object has the data "pillar" and the data "totem" is equal to the totem
+                if (std::any_cast<int>(obj->data["pillar"]) == totem) {
+                    // change the texture of the object
+                    sf::Texture texture;
+                    texture.loadFromFile("./assets/totem_pillar/pillar_finished.png");
+                    obj->data["sfTexture"] = texture;
+                    obj->data["texture"] = "./assets/totem_pillar/pillar_finished.png";
+                }
+            }
+        }
+    }
+}
+
+void Game::getTotem()
+{
+    std::pair<Map, Map> map = _gameMap->getMap(_timeLine);
+    for (auto& row : map.second) {
+        for (auto& obj : row) {
+            if (obj->data.find("isTotem") != obj->data.end()) {
+                if (std::any_cast<int>(obj->data["totem"]) == 1) {
+                    sf::Texture texture;
+                    texture.loadFromFile("./assets/thomas.png");
+                    obj->data["sfTexture"] = texture;
+                    obj->data["texture"] = "./assets/thomas.png";
+                }
+            }
+        }
+    }
 }
 
 void Game::playMusic()

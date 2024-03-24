@@ -34,4 +34,5 @@ Totem::Totem(std::string str, std::pair<int, int> pos, std::pair<int, int> size)
     data["TextureSize"] = size;
     data["actionEffect"] = &totem_action;
     data["isTotem"] = true;
+    data["totem"] = 1;
 }

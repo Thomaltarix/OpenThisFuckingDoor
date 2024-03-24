@@ -25,6 +25,7 @@ Pillar::Pillar(std::string str, std::pair<int, int> pos, std::pair<int, int> siz
 {
     addModule<InteractionModule>();
     addModule<DisplayModule>();
+    static int i = -2;
 
     data["texture"] = str;
     sf::Texture texture;
@@ -34,5 +35,6 @@ Pillar::Pillar(std::string str, std::pair<int, int> pos, std::pair<int, int> siz
     data["y"] = pos.second;
     data["TextureSize"] = size;
     data["actionEffect"] = &pillar_action;
+    data["pillar"] = i;
+    i++;
 }
-
