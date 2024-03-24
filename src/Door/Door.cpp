@@ -11,15 +11,16 @@
 #include <Game.hpp>
 #include "GameObject.hpp"
 
-Door::Door(std::string str)
+Door::Door(std::string str, std::pair<int, int> pos, std::pair<int, int> size)
 {
     addModule<DisplayModule>();
     addModule<CollisionModule>();
+    (void)size;
     data["texture"] = str;
     sf::Texture text;
     text.loadFromFile("./assets/Door/door_1.png");
     data["sfTexture"] = text;
-    data["x"] = 2462;
-    data["y"] = 2452;
+    data["x"] = pos.first;
+    data["y"] = pos.second;
     data["TextureSize"] = std::pair<int, int>(126, 131);
 }
