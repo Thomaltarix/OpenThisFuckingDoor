@@ -21,7 +21,12 @@ int main(int argc, char **argv)
     while (game.isWindowOpen()) {
         event = game.getKeyEvent();
         game.clearWindow();
-        game.getGameMenu()->displayGameMenu();
+        if (game.getScene() == GAMEMENU) {
+            game.getGameMenu()->displayGameMenu();
+        }
+        if (game.getScene() == OPTION) {
+            game.getOptionMenu()->displayOptionMenu();
+        }
         game.DisplayWindow();
     }
     (void) event;

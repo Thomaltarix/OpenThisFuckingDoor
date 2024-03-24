@@ -20,6 +20,7 @@ Game::Game()
         throw Error("Failed to load Music");
     _musicGame.setLoop(true);
     _GameMenu = new GameMenu();
+    _scene = GAMEMENU;
 }
 
 Game::~Game()
@@ -76,13 +77,15 @@ void Game::handleMouseOver()
     sf::IntRect rect;
 
     for (auto& button :game.getGameMenu()->getbutton()) {
-        if (button->getSprite()->getGlobalBounds().contains(mousePos)) {
-            if (button->getType() == button->DOOR) {
-                rect = sf::IntRect(72,0,72,66);
-                button->getSprite()->setTextureRect(rect);
-            } else {
-                rect = sf::IntRect(0,133,500,133);
-                button->getSprite()->setTextureRect(rect);
+        if (_scene == GAMEMENU) {
+            if (button->getSprite()->getGlobalBounds().contains(mousePos)) {
+                if (button->getType() == button->DOOR) {
+                    rect = sf::IntRect(72,0,72,66);
+                    button->getSprite()->setTextureRect(rect);
+                } else {
+                    rect = sf::IntRect(0,133,500,133);
+                    button->getSprite()->setTextureRect(rect);
+                }
             }
         } else {
             if (button->getType() == button->DOOR) {
@@ -103,17 +106,22 @@ void Game::handleMousePress()
 
     for (auto& button :game.getGameMenu()->getbutton()) {
         if (button->getSprite()->getGlobalBounds().contains(mousePos)) {
-            if (button->getType() == button->DOOR) {
-                rect = sf::IntRect(144,0,72,66);
-                button->getSprite()->setTextureRect(rect);
-                rect = sf::IntRect(216,0,72,66);
-                button->getSprite()->setTextureRect(rect);
-            } else {
-                rect = sf::IntRect(0,266,500,133);
-                button->getSprite()->setTextureRect(rect);
-            }
-            if (button->getType() == 3) {
-                closeWindow();
+            if (_scene == GAMEMENU) {
+                if (button->getType() == button->DOOR) {
+                    rect = sf::IntRect(144,0,72,66);
+                    button->getSprite()->setTextureRect(rect);
+                    rect = sf::IntRect(216,0,72,66);
+                    button->getSprite()->setTextureRect(rect);
+                } else {
+                    rect = sf::IntRect(0,266,500,133);
+                    button->getSprite()->setTextureRect(rect);
+                }
+                if (button->getType() == button->LEAVE) {
+                    closeWindow();
+                }
+                if (button->getType() == button->DOOR) {
+                    _scene = GAMEPLAY;
+                }
             }
         }
     }
@@ -124,12 +132,14 @@ void Game::handleMouseReleased()
     sf::IntRect rect;
 
     for (auto& button :game.getGameMenu()->getbutton()) {
-        if (button->getType() == button->DOOR) {
-            rect = sf::IntRect(0,0,72,66);
-            button->getSprite()->setTextureRect(rect);
-        } else {
-            rect = sf::IntRect(0,0,500,128);
-            button->getSprite()->setTextureRect(rect);
+        if (_scene == GAMEMENU) {
+            if (button->getType() == button->DOOR) {
+                rect = sf::IntRect(0,0,72,66);
+                button->getSprite()->setTextureRect(rect);
+            } else {
+                rect = sf::IntRect(0,0,500,128);
+                button->getSprite()->setTextureRect(rect);
+            }
         }
     }
 }
