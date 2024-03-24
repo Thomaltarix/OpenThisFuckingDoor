@@ -9,7 +9,8 @@
 
 void event_action(GameObject *player, GameObject *warp)
 {
-    Game::setTimeLine(warp::Timeline);
+    (void) player;
+    game.setTimeLine(std::any_cast<GameMap::TimeLine>(warp->data["Timeline"]));
 }
 
 Warp::Warp(std::string str, std::pair<int, int> pos, std::pair<int, int> size)
