@@ -16,7 +16,7 @@
 
 class Door : public GameObject {
     public:
-        Door(std::string str);
+        Door(std::string str, std::pair<int, int> pos, std::pair<int, int> size);
         ~Door() = default;
 
         // Getters
