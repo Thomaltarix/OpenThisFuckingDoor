@@ -81,7 +81,7 @@ GameObject *GameMap::getGameObject(int x, int y, std::string path, MapType type,
     if (objectType == "Wall")
         return new Wall(path, std::pair<int, int>(x * 100, y * 100), std::pair<int, int>(100, 100));
     if (objectType == "Totem")
-        return new Totem(path, std::pair<int, int>(x * 100, y * 100), std::pair<int, int>(100, 100));
+        return new Totem(path, std::pair<int, int>(x * 100, y * 100), std::pair<int, int>(160, 160));
     if (objectType == "Door")
         return new Door(path);
     if (objectType == "Pillar")

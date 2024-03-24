@@ -83,6 +83,8 @@ void DisplayModule::update(GameObject *gameObject, std::vector<GameObject*> game
     } else {
         tex = std::any_cast<sf::Texture>(gameObject->data["sfTexture"]);
         sprite.setTexture(tex, false);
+        if (gameObject->data.find("isTotem") != gameObject->data.end())
+            sprite.scale(0.2, 0.2);
     }
     std::pair<int, int> size = std::any_cast<std::pair<int, int>>(gameObject->data["TextureSize"]);
     sprite.setTextureRect(sf::IntRect(0, 0, size.first, size.second));
