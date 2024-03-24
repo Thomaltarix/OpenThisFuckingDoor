@@ -27,4 +27,6 @@ PlayerModule::PlayerModule(GameObject *gameObject)
         gameObject->addModule<TimeModule>();
     if (gameObject->data.find("interacting") == gameObject->data.end())
         gameObject->data["interacting"] = (bool)false;
+    if (gameObject->data.find("hasTotem") == gameObject->data.end())
+        gameObject->data["hasTotem"] = (bool)false;
 }
