@@ -18,7 +18,7 @@ SRC			= 	src/main.cpp \
 				src/GameMenu/GameMenu.cpp \
 				src/button/button.cpp \
 				src/Player.cpp \
-				src/Ground.cpp
+				src/Ground.cpp \
 				src/OptionMenu/OptionMenu.cpp \
 				src/GameMap/GameMap.cpp \
 
