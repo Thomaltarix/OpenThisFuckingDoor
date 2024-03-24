@@ -61,6 +61,5 @@ class Game {
         GameMenu *_GameMenu;
 
         std::unordered_map<sf::Keyboard::Key, std::function<void()>> _keyFunctions = {
-            {sf::Keyboard::Escape, [this](){closeWindow();}}
         };
 };

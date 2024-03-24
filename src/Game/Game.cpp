@@ -50,8 +50,6 @@ int Game::getKeyEvent()
     static bool state = false;
 
     while (_window.pollEvent(_event)) {
-        if (_event.type == sf::Event::Closed)
-            closeWindow();
         if (_event.type == sf::Event::KeyPressed)
             for (auto& binds : _keyFunctions) {
                 if (binds.first == _event.key.code)
@@ -113,6 +111,9 @@ void Game::handleMousePress()
             } else {
                 rect = sf::IntRect(0,266,500,133);
                 button->getSprite()->setTextureRect(rect);
+            }
+            if (button->getType() == 3) {
+                closeWindow();
             }
         }
     }
