@@ -25,4 +25,6 @@ PlayerModule::PlayerModule(GameObject *gameObject)
         gameObject->addModule<RotatableModule>();
     if (!gameObject->hasModule<TimeModule>())
         gameObject->addModule<TimeModule>();
+    if (gameObject->data.find("interacting") == gameObject->data.end())
+        gameObject->data["interacting"] = (bool)false;
 }
