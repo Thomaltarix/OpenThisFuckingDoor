@@ -29,6 +29,7 @@ bool InteractionModule::infrontof(GameObject *obj1, GameObject *obj2)
 {
     if (HitboxModule::calculateDistance(obj1, obj2) < _range)
         return (true);
+    return (false);
 }
 
 void InteractionModule::update(GameObject *gameObject, std::vector<GameObject*> allObjects)
