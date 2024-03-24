@@ -16,6 +16,9 @@ Door::Door(std::string str)
     addModule<DisplayModule>();
     addModule<CollisionModule>();
     data["texture"] = str;
+    sf::Texture text;
+    text.loadFromFile("./assets/Door/door_1.png");
+    data["sfTexture"] = text;
     data["x"] = 2462;
     data["y"] = 2452;
     data["TextureSize"] = std::pair<int, int>(126, 131);
