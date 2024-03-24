@@ -44,6 +44,10 @@ void GameMenu::textGameMenu()
 
 void GameMenu::displayGameMenu()
 {
+    sf::View view;
+
+    view.reset((sf::FloatRect){0, 0, 1920, 1080});
+    game.getWindow().setView(view);
     game.getWindow().draw(_textTitle);
     game.getWindow().draw(_textJouer);
     for (auto& button : _buttons) {

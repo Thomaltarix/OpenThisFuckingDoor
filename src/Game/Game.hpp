@@ -16,7 +16,7 @@
 #include "OptionMenu.hpp"
 
 enum Scene {
-    GAMEMENU,
+    GAMEMENU = 0,
     OPTION,
     CREDIT,
     GAMEPLAY,
@@ -53,6 +53,9 @@ class Game {
         void setView(sf::View *view) {_view = view;}
         sf::View *getView(void) {return _view;}
 
+        // Setter
+        void setScene(enum Scene scene) {_scene = scene;}
+
         //Music
         void playMusic();
 
@@ -81,5 +84,6 @@ class Game {
         enum Scene _scene;
 
         std::unordered_map<sf::Keyboard::Key, std::function<void()>> _keyFunctions = {
+            {sf::Keyboard::Escape, [this](){setScene(GAMEMENU);}}
         };
 };
