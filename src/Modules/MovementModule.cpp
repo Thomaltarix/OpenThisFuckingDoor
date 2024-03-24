@@ -38,11 +38,11 @@ void MovementModule::update(GameObject *gameObject, std::vector<GameObject*> gam
     if (std::any_cast<Direction>(gameObject->data["direction"]) == IDLE)
         return;
     if (std::any_cast<Direction>(gameObject->data["direction"]) == UP)
-        gameObject->data["y"] = std::any_cast<double>(gameObject->data["y"]) - std::any_cast<int>(gameObject->data["speed"]);
+        gameObject->data["y"] = std::any_cast<int>(gameObject->data["y"]) - std::any_cast<int>(gameObject->data["speed"]);
     if (std::any_cast<Direction>(gameObject->data["direction"]) == DOWN)
-        gameObject->data["y"] = std::any_cast<double>(gameObject->data["y"]) + std::any_cast<int>(gameObject->data["speed"]);
+        gameObject->data["y"] = std::any_cast<int>(gameObject->data["y"]) + std::any_cast<int>(gameObject->data["speed"]);
     if (std::any_cast<Direction>(gameObject->data["direction"]) == LEFT)
-        gameObject->data["x"] = std::any_cast<double>(gameObject->data["x"]) - std::any_cast<int>(gameObject->data["speed"]);
+        gameObject->data["x"] = std::any_cast<int>(gameObject->data["x"]) - std::any_cast<int>(gameObject->data["speed"]);
     if (std::any_cast<Direction>(gameObject->data["direction"]) == RIGHT)
-        gameObject->data["x"] = std::any_cast<double>(gameObject->data["x"]) + std::any_cast<int>(gameObject->data["speed"]);
+        gameObject->data["x"] = std::any_cast<int>(gameObject->data["x"]) + std::any_cast<int>(gameObject->data["speed"]);
 }
