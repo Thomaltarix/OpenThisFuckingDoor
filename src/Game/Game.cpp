@@ -9,6 +9,7 @@
 #include "button.hpp"
 #include "Game.h"
 #include <cmath>
+#include "credit.hpp"
 
 Game::Game()
 {
@@ -23,6 +24,7 @@ Game::Game()
     _GameMenu = new GameMenu();
     _OptionMenu = new OptionMenu();
     _scene = GAMEMENU;
+    _credit = new Credit();
     sf::FloatRect rect = sf::FloatRect(0, 0, 1920, 1080);
     _view = new sf::View(rect);
     game.getWindow().setView(*_view);
@@ -205,6 +207,9 @@ void Game::handleMouseReleased()
                 }
                 if (button->getType() == button->OPTION) {
                     setScene(OPTION);
+                }
+                if (button->getType() == button->CREDIT) {
+                    setScene(CREDIT);
                 }
             }
         }
