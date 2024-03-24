@@ -12,6 +12,7 @@
 #include <unordered_map>
 #include <functional>
 #include "../GameMenu/GameMenu.hpp"
+#include "Player.hpp"
 #include "OptionMenu.hpp"
 
 enum Scene {
@@ -41,6 +42,7 @@ class Game {
         // Getter
         sf::RenderWindow &getWindow() {return _window;}
         GameMenu *getGameMenu() {return _GameMenu;}
+        Player *getPlayer() {return _player;}
         enum Scene getScene() {return _scene;}
         OptionMenu *getOptionMenu() {return _OptionMenu;}
 
@@ -74,6 +76,7 @@ class Game {
         sf::Event _event;
         sf::Music _musicGame;
         GameMenu *_GameMenu;
+        Player *_player;
         OptionMenu *_OptionMenu;
         enum Scene _scene;
 

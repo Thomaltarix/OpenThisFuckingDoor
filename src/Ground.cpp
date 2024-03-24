@@ -9,10 +9,12 @@
 #include "PositionModule.hpp"
 #include "DisplayModule.hpp"
 
-Ground::Ground(sf::Texture texture, std::pair<int, int> pos, std::pair<int, int> size)
+Ground::Ground(std::string str, std::pair<int, int> pos, std::pair<int, int> size)
 {
     addModule<PositionModule>();
     addModule<DisplayModule>();
+    sf::Texture texture;
+    texture.loadFromFile(str);
     data["texture"] = texture;
     data["x"] = pos.first;
     data["y"] = pos.second;
