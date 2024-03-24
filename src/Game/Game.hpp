@@ -12,7 +12,7 @@
 #include <unordered_map>
 #include <functional>
 #include "../GameMenu/GameMenu.hpp"
-#include "Player.hpp"
+#include "../Player/Player.hpp"
 #include "OptionMenu.hpp"
 #include "credit.hpp"
 #include "GameMap.hpp"
