@@ -72,8 +72,18 @@ int Game::getKeyEvent()
         }
         if (_event.type == sf::Event::MouseMoved && state != true)
             handleMouseOver();
-        if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && !sf::Keyboard::isKeyPressed(sf::Keyboard::S) && !sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-            game.getPlayer()->data["direction"] = IDLE;
+        if (game.getScene() == GAMEPLAY) {
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+                game.getPlayer()->data["direction"] = UP;
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+                game.getPlayer()->data["direction"] = DOWN;
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+                game.getPlayer()->data["direction"] = RIGHT;
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+                game.getPlayer()->data["direction"] = LEFT;
+            else
+                game.getPlayer()->data["direction"] = IDLE;
+        }
     }
     return -1;
 }
