@@ -18,16 +18,16 @@ SRC			= 	src/main.cpp \
 				src/Modules/EventModule.cpp \
 				src/GameMenu/GameMenu.cpp \
 				src/button/button.cpp \
-				src/Player.cpp \
-				src/Ground.cpp \
+				src/Player/Player.cpp \
+				src/Ground/Ground.cpp \
 				src/OptionMenu/OptionMenu.cpp \
 				src/GameMap/GameMap.cpp \
 				src/Modules/InteractionModule.cpp \
 				src/credit/credit.cpp \
-				src/Wall.cpp \
-				src/Totem.cpp \
-				src/Door.cpp \
-				src/Pillar.cpp \
+				src/Wall/Wall.cpp \
+				src/Totem/Totem.cpp \
+				src/Door/Door.cpp \
+				src/Pillar/Pillar.cpp \
 
 CXX_OBJS			= $(SRC:.cpp=.o)
 
