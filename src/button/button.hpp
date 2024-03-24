@@ -16,7 +16,12 @@ class Button {
     public:
         enum ButtonType {
             DOOR,
-            BUTTON,
+            OPTION,
+            CREDIT,
+            LEAVE,
+            AUDIOLOW,
+            AUDIOUP,
+            RETOUR,
         };
 
         Button(std::string path, std::pair<float, float> pos, std::pair<float, float> size, ButtonType type);

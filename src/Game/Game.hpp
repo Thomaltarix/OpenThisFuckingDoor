@@ -13,6 +13,14 @@
 #include <functional>
 #include "../GameMenu/GameMenu.hpp"
 #include "Player.hpp"
+#include "OptionMenu.hpp"
+
+enum Scene {
+    GAMEMENU,
+    OPTION,
+    CREDIT,
+    GAMEPLAY,
+};
 
 class Game {
     public:
@@ -27,12 +35,16 @@ class Game {
         //Events
         int getKeyEvent();
         void handleEvents();
-        void handleMouseEvents();
+        void handleMouseOver();
+        void handleMousePress();
+        void handleMouseReleased();
 
         // Getter
         sf::RenderWindow &getWindow() {return _window;}
         GameMenu *getGameMenu() {return _GameMenu;}
         Player *getPlayer() {return _player;}
+        enum Scene getScene() {return _scene;}
+        OptionMenu *getOptionMenu() {return _OptionMenu;}
 
         //Display
         void DisplayWindow();
@@ -65,8 +77,9 @@ class Game {
         sf::Music _musicGame;
         GameMenu *_GameMenu;
         Player *_player;
+        OptionMenu *_OptionMenu;
+        enum Scene _scene;
 
         std::unordered_map<sf::Keyboard::Key, std::function<void()>> _keyFunctions = {
-            {sf::Keyboard::Escape, [this](){closeWindow();}}
         };
 };
