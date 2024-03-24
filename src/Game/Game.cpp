@@ -121,12 +121,6 @@ void Game::handleMousePress()
                     rect = sf::IntRect(0,266,500,133);
                     button->getSprite()->setTextureRect(rect);
                 }
-                if (button->getType() == button->LEAVE) {
-                    closeWindow();
-                }
-                if (button->getType() == button->DOOR) {
-                    setScene(GAMEPLAY);
-                }
             }
         }
     }
@@ -134,6 +128,7 @@ void Game::handleMousePress()
 
 void Game::handleMouseReleased()
 {
+    sf::Vector2f mousePos = game.getWindow().mapPixelToCoords(sf::Mouse::getPosition(game.getWindow()));
     sf::IntRect rect;
 
     for (auto& button :game.getGameMenu()->getbutton()) {
@@ -144,6 +139,14 @@ void Game::handleMouseReleased()
             } else {
                 rect = sf::IntRect(0,0,500,128);
                 button->getSprite()->setTextureRect(rect);
+            }
+            if (button->getSprite()->getGlobalBounds().contains(mousePos)) {
+                if (button->getType() == button->LEAVE) {
+                    closeWindow();
+                }
+                if (button->getType() == button->DOOR) {
+                    setScene(GAMEPLAY);
+                }
             }
         }
     }
