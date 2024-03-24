@@ -44,6 +44,8 @@ int main(int argc, char **argv)
             game.getPlayer()->update(caca);
             game.getPlayer()->displayPlayer();
         }
+        if (game.getScene() == CREDIT)
+            game.getCreditMenu()->displayCredit();
         game.DisplayWindow();
     }
     (void) event;

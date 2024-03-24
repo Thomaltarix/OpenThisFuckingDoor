@@ -9,6 +9,7 @@
 #include "button.hpp"
 #include "Game.h"
 #include <cmath>
+#include "credit.hpp"
 
 Game::Game()
 {
@@ -23,6 +24,7 @@ Game::Game()
     _GameMenu = new GameMenu();
     _OptionMenu = new OptionMenu();
     _scene = GAMEMENU;
+    _credit = new Credit();
     sf::FloatRect rect = sf::FloatRect(0, 0, 1920, 1080);
     _view = new sf::View(rect);
     game.getWindow().setView(*_view);
@@ -168,14 +170,14 @@ void Game::handleMousePress()
                     rect = sf::IntRect(0,210,78,105);
                     button->getSprite()->setTextureRect(rect);
                     if (round(game.getVolumeMenu()) > 0.00) {
-                        game.setGameVolume(round(game.getVolumeMenu() - 1.00));
+                        game.setGameVolume(round(game.getVolumeMenu() - 5.00));
                         game.getOptionMenu()->getTextVolume()->setString(std::to_string((int)round(game.getVolumeMenu())));
                     }
                 } else if (button->getType() == button->AUDIOUP) {
                     rect = sf::IntRect(78,210, 78,105);
                     button->getSprite()->setTextureRect(rect);
                     if (round(game.getVolumeMenu()) < 100) {
-                        game.setGameVolume(round(game.getVolumeMenu() + 1));
+                        game.setGameVolume(round(game.getVolumeMenu() + 5.00));
                         game.getOptionMenu()->getTextVolume()->setString(std::to_string((int)round(game.getVolumeMenu())));
                     }
                 }
@@ -207,6 +209,9 @@ void Game::handleMouseReleased()
                 }
                 if (button->getType() == button->OPTION) {
                     setScene(OPTION);
+                }
+                if (button->getType() == button->CREDIT) {
+                    setScene(CREDIT);
                 }
             }
         }

@@ -14,6 +14,7 @@
 #include "../GameMenu/GameMenu.hpp"
 #include "Player.hpp"
 #include "OptionMenu.hpp"
+#include "credit.hpp"
 #include "GameMap.hpp"
 
 enum Scene {
@@ -49,7 +50,6 @@ class Game {
         GameMap *getGameMap() {return _gameMap;}
         sf::Music *getMusic() {return &_musicGame;}
         float getVolumeMenu() {return _musicGame.getVolume();}
-
         //Display
         void DisplayWindow();
 
@@ -90,6 +90,7 @@ class Game {
         sf::Music _musicGame;
         GameMenu *_GameMenu;
         Player *_player;
+        Credit *_credit;
         OptionMenu *_OptionMenu;
         enum Scene _scene;
         GameMap *_gameMap;
