@@ -49,6 +49,7 @@ class Game {
         OptionMenu *getOptionMenu() {return _OptionMenu;}
         GameMap *getGameMap() {return _gameMap;}
         sf::Music *getMusic() {return &_musicGame;}
+        Credit *getCreditMenu() {return _credit;}
         float getVolumeMenu() {return _musicGame.getVolume();}
         //Display
         void DisplayWindow();
