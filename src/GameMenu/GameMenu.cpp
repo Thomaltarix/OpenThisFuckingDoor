@@ -17,9 +17,9 @@ GameMenu::GameMenu()
     titleGameMenu();
     textGameMenu();
     addButton("assets/GameMenu/door_button.png", (std::make_pair<float, float>)((float)game.getWindow().getSize().x / 2 - 150, (float)375), (std::make_pair<float, float>)((float)4, (float)4), Button::DOOR);
-    addButton("assets/GameMenu/option_button.png", (std::make_pair<float, float>)((float)game.getWindow().getSize().x / 2 - 190, (float)650), std::make_pair<float, float>((float)0.75, (float)0.75), Button::BUTTON);
-    addButton("assets/GameMenu/credit_button.png", (std::make_pair<float, float>)((float)game.getWindow().getSize().x / 2 - 190, (float)775), std::make_pair<float, float>((float)0.75, (float)0.75), Button::BUTTON);
-    addButton("assets/GameMenu/leave_button.png",(std::make_pair<float, float>)((float)game.getWindow().getSize().x / 2 - 190, (float)900), std::make_pair<float, float>((float)0.75, (float)0.75), Button::BUTTON);
+    addButton("assets/GameMenu/option_button.png", (std::make_pair<float, float>)((float)game.getWindow().getSize().x / 2 - 190, (float)650), std::make_pair<float, float>((float)0.75, (float)0.75), Button::OPTION);
+    addButton("assets/GameMenu/credit_button.png", (std::make_pair<float, float>)((float)game.getWindow().getSize().x / 2 - 190, (float)775), std::make_pair<float, float>((float)0.75, (float)0.75), Button::CREDIT);
+    addButton("assets/GameMenu/leave_button.png",(std::make_pair<float, float>)((float)game.getWindow().getSize().x / 2 - 190, (float)900), std::make_pair<float, float>((float)0.75, (float)0.75), Button::LEAVE);
 }
 
 void GameMenu::titleGameMenu()
