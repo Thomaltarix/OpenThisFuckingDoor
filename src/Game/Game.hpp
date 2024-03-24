@@ -60,6 +60,12 @@ class Game {
         //Music
         void playMusic();
 
+        // Player Movement
+        void movePlayer(enum Direction dir) {
+            if (dir == IDLE || std::any_cast<Direction>(_player->data["direction"]) == IDLE)
+                _player->data["direction"] = dir;
+        }
+
         class Error : public std::exception {
             public:
                 Error (const std::string &msg)

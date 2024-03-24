@@ -25,8 +25,12 @@ int main(int argc, char **argv)
             game.getGameMenu()->displayGameMenu();
         if (game.getScene() == OPTION)
             game.getOptionMenu()->displayOptionMenu();
-        if (game.getScene() == GAMEPLAY)
+        if (game.getScene() == GAMEPLAY) {
+            std::vector<GameObject *> caca;
+            caca.push_back(game.getPlayer());
+            game.getPlayer()->update(caca);
             game.getPlayer()->displayPlayer();
+        }
         game.DisplayWindow();
     }
     (void) event;
