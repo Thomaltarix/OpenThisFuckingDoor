@@ -23,7 +23,6 @@ void Game::displayFilter(void)
         sprite.setScale(10,10);
         sprite.setOrigin(-10,-10);
         game.getWindow().draw(sprite);
-        game.getPlayer()->data["speed"] = (int)10;
     }
     if (game.getTimeLine() == GameMap::TimeLine::FUTUR) {
         texture.loadFromFile("assets/futur.png");
@@ -32,10 +31,7 @@ void Game::displayFilter(void)
         sprite.setScale(10,10);
         sprite.setOrigin(-10,-10);
         game.getWindow().draw(sprite);
-        game.getPlayer()->data["speed"] = (int)10;
     }
-    if (game.getTimeLine() == GameMap::TimeLine::PRESENT)
-        game.getPlayer()->data["speed"] = (int)7;
 }
 
 Game::Game()

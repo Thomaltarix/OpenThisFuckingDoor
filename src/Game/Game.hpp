@@ -66,6 +66,7 @@ class Game {
         void setScene(enum Scene scene) {_scene = scene;}
         void setGameVolume(float volume) {_musicGame.setVolume(volume);}
         void setTimeLine(GameMap::TimeLine timeLine) {_timeLine = timeLine;}
+        void setSpeed(int incr) {getPlayer()->data["speed"] = std::any_cast<int>(getPlayer()->data["speed"]) + incr;}
         //Music
         void playMusic();
 
@@ -108,6 +109,8 @@ class Game {
             {sf::Keyboard::U, [this](){setTimeLine(GameMap::TimeLine::PAST);}},
             {sf::Keyboard::I, [this](){setTimeLine(GameMap::TimeLine::PRESENT);}},
             {sf::Keyboard::O, [this](){setTimeLine(GameMap::TimeLine::FUTUR);}},
+            {sf::Keyboard::N, [this](){setSpeed(1);}},
+            {sf::Keyboard::B, [this](){setSpeed(-1);}},
         };
 
         void setupFilters(void);
