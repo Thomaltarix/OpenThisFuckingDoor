@@ -15,7 +15,7 @@ Ground::Ground(std::string str, std::pair<int, int> pos, std::pair<int, int> siz
     addModule<DisplayModule>();
     sf::Texture texture;
     texture.loadFromFile(str);
-    data["texture"] = texture;
+    data["sfTexture"] = texture;
     data["x"] = pos.first;
     data["y"] = pos.second;
     data["TextureSize"] = size;

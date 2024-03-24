@@ -14,6 +14,9 @@
 
 void pillar_action(GameObject *player, GameObject *pillar)
 {
+    sf::Texture texture;
+    texture.loadFromFile("../assets/totem_pillar/pillar_finished.png");
+    pillar->data["sfTexture"] = texture;
     pillar->data["texture"] = "../assets/totem_pillar/pillar_finished.png";
 }
 
@@ -21,7 +24,11 @@ Pillar::Pillar(std::string str, std::pair<int, int> pos, std::pair<int, int> siz
 {
     addModule<InteractionModule>();
     addModule<DisplayModule>();
+
     data["texture"] = str;
+    sf::Texture texture;
+    texture.loadFromFile(str);
+    data["sfTexture"] = texture;
     data["x"] = pos.first;
     data["y"] = pos.second;
     data["TextureSize"] = size;
