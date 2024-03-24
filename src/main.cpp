@@ -30,6 +30,7 @@ int main(int argc, char **argv)
     (void) argv;
 
     game.playMusic();
+    game.setTimeLine(GameMap::TimeLine::PRESENT);
     while (game.isWindowOpen()) {
         event = game.getKeyEvent();
         game.clearWindow();
@@ -38,7 +39,8 @@ int main(int argc, char **argv)
         if (game.getScene() == OPTION)
             game.getOptionMenu()->displayOptionMenu();
         if (game.getScene() == GAMEPLAY) {
-            displayMap(game.getGameMap()->getMaps().first);
+            displayMap(game.getGameMap()->getMap(game.getTimeLine()).first);
+            displayMap(game.getGameMap()->getMap(game.getTimeLine()).second);
             std::vector<GameObject *> caca;
             caca.push_back(game.getPlayer());
             game.getPlayer()->update(caca);

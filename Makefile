@@ -24,6 +24,10 @@ SRC			= 	src/main.cpp \
 				src/GameMap/GameMap.cpp \
 				src/Modules/InteractionModule.cpp \
 				src/credit/credit.cpp \
+				src/Wall.cpp \
+				src/Totem.cpp \
+				src/Door.cpp \
+				src/Pillar.cpp \
 
 CXX_OBJS			= $(SRC:.cpp=.o)
 

@@ -55,6 +55,8 @@ class Game {
 
         //Display
         void DisplayWindow();
+        GameMap::TimeLine getTimeLine() {return _timeLine;}
+        void setTimeLine(GameMap::TimeLine timeLine) {_timeLine = timeLine;}
 
         // View
         void setView(sf::View *view) {_view = view;}
@@ -97,6 +99,7 @@ class Game {
         OptionMenu *_OptionMenu;
         enum Scene _scene;
         GameMap *_gameMap;
+        GameMap::TimeLine _timeLine;
 
         std::unordered_map<sf::Keyboard::Key, std::function<void()>> _keyFunctions = {
             {sf::Keyboard::Escape, [this](){setScene(GAMEMENU);}}

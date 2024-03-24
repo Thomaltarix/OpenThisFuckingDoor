@@ -11,17 +11,38 @@
 #include <sys/stat.h>
 #include <fstream>
 #include "Ground.hpp"
+#include "Wall.hpp"
+#include "Totem.hpp"
+#include "Door.hpp"
+#include "Pillar.hpp"
+#include "Game.h"
 
-GameMap::GameMap() {}
+GameMap::GameMap()
+{
+    Map mapBackPast;
+    Map mapHitPas;
+    _maps.push_back(std::make_pair(mapBackPast, mapHitPas));
+    Map mapBackPres;
+    Map mapHitPres;
+    _maps.push_back(std::make_pair(mapBackPres, mapHitPres));
+    Map mapBackFut;
+    Map mapHitFut;
+    _maps.push_back(std::make_pair(mapBackFut, mapHitFut));
+}
 
 GameMap::~GameMap() {}
 
-std::pair<Map, Map> GameMap::getMaps()
+std::vector<std::pair<Map, Map>> GameMap::getMaps()
 {
     return _maps;
 }
 
-void GameMap::setupMap(std::string path, MapType type)
+std::pair<Map, Map> GameMap::getMap(TimeLine timeLine)
+{
+    return _maps[timeLine];
+}
+
+void GameMap::setupMap(std::string path, MapType type, TimeLine timeLine)
 {
     if (path.empty())
         return;
@@ -37,9 +58,9 @@ void GameMap::setupMap(std::string path, MapType type)
             col = 0;
             row++;
             if (type == BACKGROUND)
-                _maps.first.push_back(list);
+                _maps[timeLine].first.push_back(list);
             if (type == HITBOX)
-                _maps.second.push_back(list);
+                _maps[timeLine].second.push_back(list);
             list.clear();
         }
         if (row == data["width"])
@@ -57,15 +78,17 @@ GameObject *GameMap::getGameObject(int x, int y, std::string path, MapType type,
         return new Ground(path, std::pair<int, int>(x * 100, y * 100), std::pair<int, int>(100, 100));
     }
     std::string objectType = getObjectType(tileSet, tile);
+    if (objectType == "Wall")
+        return new Wall(path, std::pair<int, int>(x * 100, y * 100), std::pair<int, int>(100, 100));
+    if (objectType == "Totem")
+        return new Totem(path, std::pair<int, int>(x * 100, y * 100), std::pair<int, int>(100, 100));
+    if (objectType == "Door")
+        return new Door(path);
+    if (objectType == "Pillar")
+        return new Pillar(path, std::pair<int, int>(x * 100, y * 100), std::pair<int, int>(100, 100));
     // Not implemented yet
-    // if (objectType == "Player")
-    //     return new Player(x, y, path);
-    // if (objectType == "Wall")
-    //     return new Wall(x, y, path);
-    (void) x;
-    (void) y;
-    (void) path;
-    (void) type;
+    // if (objectType == "Warp")
+    //     return new Warp(path, std::pair<int, int>(x * 100, y * 100), std::pair<int, int>(100, 100));
     return new GameObject();
 }
 

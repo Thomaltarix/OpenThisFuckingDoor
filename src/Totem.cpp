@@ -23,6 +23,8 @@ Totem::Totem(std::string str, std::pair<int, int> pos, std::pair<int, int> size)
 {
     addModule<InteractionModule>();
     addModule<DisplayModule>();
+    sf::Texture tex;
+    tex.loadFromFile(str);
     data["texture"] = str;
     sf::Texture text;
     text.loadFromFile("./assets/totem.png");

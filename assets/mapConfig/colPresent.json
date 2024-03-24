@@ -122,23 +122,28 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"assets/water_snow/water.png"
+         "source":"water_snow/water.png",
+         "type":"Wall"
         }, 
         {
          "firstgid":2,
-         "source":"assets/Door/door_1.png"
+         "source":"Door/door_1.png",
+         "type":"Door"
         }, 
         {
          "firstgid":3,
-         "source":"assets/totem_pillar/pillar.png"
+         "source":"totem_pillar/pillar.png",
+         "type":"Pillar"
         }, 
         {
          "firstgid":4,
-         "source":"assets/totem.png"
+         "source":"totem.png",
+         "type":"Totem"
         },
         {
          "firstgid":5,
-         "source":"assets/warp_plate/warp_plate.png"
+         "source":"warp_plate/warp_plate.png",
+         "type":"Warp"
         }],
  "tilewidth":100,
  "type":"map",
