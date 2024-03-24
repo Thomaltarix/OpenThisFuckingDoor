@@ -20,7 +20,7 @@ Wall::Wall(std::string str, std::pair<int, int> pos, std::pair<int, int> size)
     addModule<PositionModule>();
     addModule<CollisionModule>();
     addModule<DisplayModule>();
-    data["texture"] = texture;
+    data["sfTexture"] = texture;
     data["x"] = pos.first;
     data["y"] = pos.second;
     data["TextureSize"] = size;
