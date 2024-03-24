@@ -90,14 +90,14 @@ void Game::handleMouseOver()
                     rect = sf::IntRect(0,133,500,133);
                     button->getSprite()->setTextureRect(rect);
                 }
-            }
-        } else {
+            } else {
             if (button->getType() == button->DOOR) {
                 rect = sf::IntRect(0,0,72,66);
                 button->getSprite()->setTextureRect(rect);
             } else {
                 rect = sf::IntRect(0,0,500,128);
                 button->getSprite()->setTextureRect(rect);
+            }
             }
         }
     }
