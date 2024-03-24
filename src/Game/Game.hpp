@@ -12,10 +12,10 @@
 #include <unordered_map>
 #include <functional>
 #include "../GameMenu/GameMenu.hpp"
-#include "Player.hpp"
 #include "OptionMenu.hpp"
 #include "credit.hpp"
 #include "GameMap.hpp"
+#include "../Player/Player.hpp"
 
 enum Scene {
     GAMEMENU = 0,

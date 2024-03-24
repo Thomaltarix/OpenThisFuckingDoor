@@ -18,8 +18,8 @@ SRC			= 	src/main.cpp \
 				src/Modules/EventModule.cpp \
 				src/GameMenu/GameMenu.cpp \
 				src/button/button.cpp \
-				src/Player.cpp \
-				src/Ground.cpp \
+				src/Player/Player.cpp \
+				src/Ground/Ground.cpp \
 				src/OptionMenu/OptionMenu.cpp \
 				src/GameMap/GameMap.cpp \
 				src/Modules/InteractionModule.cpp \
@@ -30,7 +30,7 @@ CXX_OBJS			= $(SRC:.cpp=.o)
 NAME		= OpenThisFuckingDoor
 
 
-INCLUDE 	= -I./src/Game/ -I./src/ -I./src/Modules -I./src/GameMenu -I./src/button -I./src/OptionMenu -I./src/GameMap/ -I./src/credit
+INCLUDE 	= -I./src/Game/ -I./src/ -I./src/Modules -I./src/GameMenu -I./src/button -I./src/OptionMenu -I./src/GameMap/ -I./src/credit -I.src/Player -I./src/Ground
 GRAPHFLAG	= -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
 CXXFLAGS 	= -std=c++20 -Wall -Wextra -Werror -g $(INCLUDE) $(GRAPHFLAG)
 

@@ -10,7 +10,7 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <fstream>
-#include "Ground.hpp"
+#include "../Ground/Ground.hpp"
 
 GameMap::GameMap() {}
 
