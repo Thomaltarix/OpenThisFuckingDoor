@@ -14,6 +14,7 @@
 #include "../GameMenu/GameMenu.hpp"
 #include "Player.hpp"
 #include "OptionMenu.hpp"
+#include "GameMap.hpp"
 
 enum Scene {
     GAMEMENU = 0,
@@ -45,8 +46,10 @@ class Game {
         Player *getPlayer() {return _player;}
         enum Scene getScene() {return _scene;}
         OptionMenu *getOptionMenu() {return _OptionMenu;}
+        GameMap *getGameMap() {return _gameMap;}
         sf::Music *getMusic() {return &_musicGame;}
         float getVolumeMenu() {return _musicGame.getVolume();}
+
         //Display
         void DisplayWindow();
 
@@ -89,6 +92,7 @@ class Game {
         Player *_player;
         OptionMenu *_OptionMenu;
         enum Scene _scene;
+        GameMap *_gameMap;
 
         std::unordered_map<sf::Keyboard::Key, std::function<void()>> _keyFunctions = {
             {sf::Keyboard::Escape, [this](){setScene(GAMEMENU);}}

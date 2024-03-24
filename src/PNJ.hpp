@@ -11,8 +11,6 @@
 #include <SFML/Audio.hpp>
 #include <vector>
 #include <unordered_map>
-#include <AEntity.hpp>
-#include <Move.hpp>
 
 class PNJ : public Move {
     public:

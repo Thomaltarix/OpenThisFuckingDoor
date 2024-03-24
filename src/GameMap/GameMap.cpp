@@ -10,19 +10,20 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <fstream>
+#include "Ground.hpp"
 
 GameMap::GameMap() {}
 
 GameMap::~GameMap() {}
 
-std::tuple<Map, Map> GameMap::getMaps()
+std::pair<Map, Map> GameMap::getMaps()
 {
     return _maps;
 }
 
 void GameMap::setupMap(std::string path, MapType type)
 {
-    if (path == "")
+    if (path.empty())
         return;
     std::ifstream f(path.c_str());
     json data = json::parse(f);
@@ -43,17 +44,23 @@ void GameMap::setupMap(std::string path, MapType type)
         }
         if (row == data["width"])
             return;
+
         GameObject *object = getGameObject(col, row, getPath(data["tilesets"], tile.get<int>()), type, data["tilesets"], tile.get<int>());
         list.push_back(object);
         col++;
     }
+    //for (auto& elem : _maps.first) {
+    //    for (auto& elem2 : elem) {
+    //        void(elem2);
+    //    }
+    //}
 }
 
 GameObject *GameMap::getGameObject(int x, int y, std::string path, MapType type, json tileSet, int tile)
 {
-    // Not implemented yet
-    // if (type == BACKGROUND)
-    //     return new Ground(x, y, path);
+    if (type == BACKGROUND) {
+        return new Ground(path, std::pair<int, int>(x * 50, y * 50), std::pair<int, int>(50, 50));
+    }
     std::string objectType = getObjectType(tileSet, tile);
     // Not implemented yet
     // if (objectType == "Player")
@@ -71,7 +78,7 @@ std::string GameMap::getPath(json tileSet, int tile)
 {
     for (auto& tileData : tileSet) {
         if (tileData["firstgid"] == tile) {
-            return "./assets/" + tileData["image"].get<std::string>();
+            return "./assets/" + tileData["source"].get<std::string>();
         }
     }
     return "";

@@ -18,8 +18,8 @@ DisplayModule::DisplayModule(GameObject *gameObject)
 {
     if (gameObject->hasModule<DisplayModule>())
         throw Error("GameObject already has a DisplayModule!");
-    if (gameObject->data.find("texture") == gameObject->data.end())
-        gameObject->data["texture"] = nullptr;
+    if (gameObject->data.find("sfTexture") == gameObject->data.end())
+        gameObject->data["sfTexture"] = sf::Texture();
     if (gameObject->data.find("TextureSize") == gameObject->data.end())
         gameObject->data["TextureSize"] = std::pair<int, int>(0, 0);
     if (gameObject->hasModule<TimeModule>() == false)
@@ -65,16 +65,17 @@ std::string animation(void)
 void DisplayModule::update(GameObject *gameObject, std::vector<GameObject*> gameObjects)
 {
     sf::Sprite sprite;
-    std::string textures = std::any_cast<std::string>(gameObject->data["texture"]);
     sf::Texture tex;
 
-    tex.loadFromFile(textures);
-    (void) gameObjects;
+    (void)gameObjects;
     if (gameObject->hasModule<PlayerModule>()) {
         tex.loadFromFile(animation());
         sprite.setTexture(tex, false);
-    } else
+    } else {
+        tex = std::any_cast<sf::Texture>(gameObject->data["sfTexture"]);
         sprite.setTexture(tex, false);
-    sprite.setPosition((sf::Vector2f){(float)std::any_cast<int>(gameObject->data["x"]), (float)std::any_cast<int>(gameObject->data["y"])});
+    }
+    std::pair<int, int> size = std::any_cast<std::pair<int, int>>(gameObject->data["TextureSize"]);
+    sprite.setTextureRect(sf::IntRect(0, 0, size.first, size.second));
     game.getWindow().draw(sprite);
 }

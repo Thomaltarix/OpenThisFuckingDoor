@@ -11,6 +11,18 @@
 
 Game game;
 
+void displayMap(Map map)
+{
+    std::vector<GameObject *> vec;
+    for (auto &elem1 : map) {
+        for (auto &elem2 : elem1) {
+            vec.push_back(elem2);
+            elem2->update(vec);
+            vec.clear();
+        }
+    }
+}
+
 int main(int argc, char **argv)
 {
     int event;
@@ -26,6 +38,7 @@ int main(int argc, char **argv)
         if (game.getScene() == OPTION)
             game.getOptionMenu()->displayOptionMenu();
         if (game.getScene() == GAMEPLAY) {
+            displayMap(game.getGameMap()->getMaps().first);
             std::vector<GameObject *> caca;
             caca.push_back(game.getPlayer());
             game.getPlayer()->update(caca);

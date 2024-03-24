@@ -26,10 +26,10 @@ Player::Player(std::string str, std::pair<int, int> pos, std::pair<int, int> siz
 
 void Player::displayPlayer(void)
 {
-    float x = (float)std::any_cast<int>(data["x"]);
-    float y = (float)std::any_cast<int>(data["y"]);
-    std::pair size = std::any_cast<std::pair<int, int>>(data["TextureSize"]);
-    sf::View view((sf::FloatRect){x - (192 / 2) + (size.first / 2), y - (108 / 2) + (size.second / 2), 192, 108});
+    //float x = (float)std::any_cast<int>(data["x"]);
+    //float y = (float)std::any_cast<int>(data["y"]);
+    //std::pair size = std::any_cast<std::pair<int, int>>(data["TextureSize"]);
+    //sf::View view((sf::FloatRect){x - (192 / 2) + (size.first / 2), y - (108 / 2) + (size.second / 2), 192, 108});
 
-    game.getWindow().setView(view);
+    //game.getWindow().setView(view);
 }

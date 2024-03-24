@@ -27,6 +27,8 @@ Game::Game()
     _view = new sf::View(rect);
     game.getWindow().setView(*_view);
     _player = new Player("assets/character/player/idle/idle_1.png", std::pair<int, int>(500, 500), std::pair<int, int>(21, 13));
+    _gameMap = new GameMap();
+    _gameMap->setupMap("assets/mapConfig/mapPresent.json", GameMap::BACKGROUND);
 }
 
 Game::~Game()
