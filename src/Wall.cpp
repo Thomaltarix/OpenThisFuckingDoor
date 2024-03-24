@@ -14,13 +14,10 @@
 
 Wall::Wall(std::string str, std::pair<int, int> pos, std::pair<int, int> size)
 {
-    sf::Texture texture;
-
-    texture.loadFromFile(str);
     addModule<PositionModule>();
     addModule<CollisionModule>();
     addModule<DisplayModule>();
-    data["texture"] = texture;
+    data["texture"] = str;
     sf::Texture text;
     text.loadFromFile(str);
     data["sfTexture"] = text;
