@@ -19,7 +19,7 @@ Game::Game()
     _gameMap->setupMap("assets/mapConfig/mapPresent.json", GameMap::BACKGROUND, GameMap::TimeLine::PRESENT);
     _gameMap->setupMap("assets/mapConfig/colPresent.json", GameMap::HITBOX, GameMap::TimeLine::PRESENT);
     _gameMap->setupMap("assets/mapConfig/mapFutur.json", GameMap::BACKGROUND, GameMap::TimeLine::FUTUR);
-    // _gameMap->setupMap("assets/mapConfig/colFutur.json", GameMap::HITBOX, GameMap::TimeLine::FUTUR);
+    _gameMap->setupMap("assets/mapConfig/colFutur.json", GameMap::HITBOX, GameMap::TimeLine::FUTUR);
     _window.create(sf::VideoMode(1920, 1080), "OpenThisFuckingDoor", sf::Style::Close | sf::Style::Fullscreen);
     if (!isWindowOpen())
         throw Error("Failed to create window");
