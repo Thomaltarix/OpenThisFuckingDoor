@@ -23,7 +23,7 @@ class GameMap {
         GameMap();
         ~GameMap();
 
-        std::tuple<Map, Map> getMaps();
+        std::pair<Map, Map> getMaps();
         void setupMap(std::string content, MapType type);
 
         class Error : public std::exception {

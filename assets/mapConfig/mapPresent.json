@@ -1,4 +1,5 @@
-{ "compressionlevel":-1,
+{
+ "compressionlevel":-1,
  "height":100,
  "infinite":false,
  "layers":[
@@ -295,7 +296,7 @@
         {
          "firstgid":44,
          "source":"plains/tiny_corner_3.png"
-        }, 
+        },
         {
          "firstgid":45,
          "source":"plains/tiny_corner_4.png"
