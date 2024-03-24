@@ -30,7 +30,6 @@ int main(int argc, char **argv)
     (void) argv;
 
     game.playMusic();
-    game.setTimeLine(GameMap::TimeLine::PRESENT);
     while (game.isWindowOpen()) {
         event = game.getKeyEvent();
         game.clearWindow();
@@ -44,6 +43,7 @@ int main(int argc, char **argv)
             std::vector<GameObject *> caca;
             caca.push_back(game.getPlayer());
             game.getPlayer()->update(caca);
+            game.displayFilter();
             game.getPlayer()->displayPlayer();
         }
         if (game.getScene() == CREDIT)

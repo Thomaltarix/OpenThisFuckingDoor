@@ -51,12 +51,12 @@ class Game {
         sf::Music *getMusic() {return &_musicGame;}
         Credit *getCreditMenu() {return _credit;}
         float getVolumeMenu() {return _musicGame.getVolume();}
-
+        GameMap::TimeLine getTimeLine() {return _timeLine;}
+        // sf::Sprite getFilter(GameMap::TimeLine timeLine) {return _filters[timeLine];}
 
         //Display
         void DisplayWindow();
-        GameMap::TimeLine getTimeLine() {return _timeLine;}
-        void setTimeLine(GameMap::TimeLine timeLine) {_timeLine = timeLine;}
+        void displayFilter();
 
         // View
         void setView(sf::View *view) {_view = view;}
@@ -65,6 +65,7 @@ class Game {
         // Setter
         void setScene(enum Scene scene) {_scene = scene;}
         void setGameVolume(float volume) {_musicGame.setVolume(volume);}
+        void setTimeLine(GameMap::TimeLine timeLine) {_timeLine = timeLine;}
         //Music
         void playMusic();
 
@@ -100,8 +101,14 @@ class Game {
         enum Scene _scene;
         GameMap *_gameMap;
         GameMap::TimeLine _timeLine;
+        std::vector<std::string> _filters;
 
         std::unordered_map<sf::Keyboard::Key, std::function<void()>> _keyFunctions = {
-            {sf::Keyboard::Escape, [this](){setScene(GAMEMENU);}}
+            {sf::Keyboard::Escape, [this](){setScene(GAMEMENU);}},
+            {sf::Keyboard::U, [this](){setTimeLine(GameMap::TimeLine::PAST);}},
+            {sf::Keyboard::I, [this](){setTimeLine(GameMap::TimeLine::PRESENT);}},
+            {sf::Keyboard::O, [this](){setTimeLine(GameMap::TimeLine::FUTUR);}},
         };
+
+        void setupFilters(void);
 };

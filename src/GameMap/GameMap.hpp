@@ -13,7 +13,6 @@
 using json = nlohmann::json;
 
 typedef std::vector<std::vector<GameObject *>> Map;
-
 class GameMap {
     public:
         enum MapType {

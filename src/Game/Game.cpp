@@ -11,9 +11,33 @@
 #include <cmath>
 #include "credit.hpp"
 
+
+void Game::displayFilter(void)
+{
+    sf::Texture texture;
+    sf::Sprite sprite;
+    if (game.getTimeLine() == GameMap::TimeLine::PAST) {
+        texture.loadFromFile("assets/past.png");
+        sprite.setTexture(texture);
+        sprite.setPosition(0,0);
+        sprite.setScale(10,10);
+        sprite.setOrigin(-10,-10);
+        game.getWindow().draw(sprite);
+    }
+    if (game.getTimeLine() == GameMap::TimeLine::FUTUR) {
+        texture.loadFromFile("assets/futur.png");
+        sprite.setTexture(texture);
+        sprite.setPosition(0,0);
+        sprite.setScale(10,10);
+        sprite.setOrigin(-10,-10);
+        game.getWindow().draw(sprite);
+    }
+}
+
 Game::Game()
 {
     _gameMap = new GameMap();
+    _timeLine = GameMap::TimeLine::PAST;
     _gameMap->setupMap("assets/mapConfig/mapPresent.json", GameMap::BACKGROUND, GameMap::TimeLine::PAST);
     _gameMap->setupMap("assets/mapConfig/colPresent.json", GameMap::HITBOX, GameMap::TimeLine::PAST);
     _gameMap->setupMap("assets/mapConfig/mapPresent.json", GameMap::BACKGROUND, GameMap::TimeLine::PRESENT);
@@ -59,7 +83,6 @@ void Game::clearWindow()
     _window.clear();
 }
 
-
 int Game::getKeyEvent()
 {
     static bool state = false;
@@ -69,8 +92,9 @@ int Game::getKeyEvent()
             _window.close();
         if (_event.type == sf::Event::KeyPressed)
             for (auto& binds : _keyFunctions) {
-                if (binds.first == _event.key.code)
+                if (binds.first == _event.key.code) {
                     binds.second();
+                }
             }
         if (_event.type == sf::Event::MouseButtonPressed) {
             state = true;
