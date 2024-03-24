@@ -23,6 +23,7 @@ void Game::displayFilter(void)
         sprite.setScale(10,10);
         sprite.setOrigin(-10,-10);
         game.getWindow().draw(sprite);
+        game.getPlayer()->data["speed"] = (int)10;
     }
     if (game.getTimeLine() == GameMap::TimeLine::FUTUR) {
         texture.loadFromFile("assets/futur.png");
@@ -31,13 +32,16 @@ void Game::displayFilter(void)
         sprite.setScale(10,10);
         sprite.setOrigin(-10,-10);
         game.getWindow().draw(sprite);
+        game.getPlayer()->data["speed"] = (int)10;
     }
+    if (game.getTimeLine() == GameMap::TimeLine::PRESENT)
+        game.getPlayer()->data["speed"] = (int)7;
 }
 
 Game::Game()
 {
     _gameMap = new GameMap();
-    _timeLine = GameMap::TimeLine::PAST;
+    _timeLine = GameMap::TimeLine::PRESENT;
     _gameMap->setupMap("assets/mapConfig/mapPresent.json", GameMap::BACKGROUND, GameMap::TimeLine::PAST);
     _gameMap->setupMap("assets/mapConfig/colPresent.json", GameMap::HITBOX, GameMap::TimeLine::PAST);
     _gameMap->setupMap("assets/mapConfig/mapPresent.json", GameMap::BACKGROUND, GameMap::TimeLine::PRESENT);
