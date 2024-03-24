@@ -55,6 +55,8 @@ int Game::getKeyEvent()
     static bool state = false;
 
     while (_window.pollEvent(_event)) {
+        if (_event.type == sf::Event::Closed)
+            _window.close();
         if (_event.type == sf::Event::KeyPressed)
             for (auto& binds : _keyFunctions) {
                 if (binds.first == _event.key.code)
@@ -68,9 +70,8 @@ int Game::getKeyEvent()
             state = false;
             handleMouseReleased();
         }
-        if (_event.type == sf::Event::MouseMoved && state != true) {
+        if (_event.type == sf::Event::MouseMoved && state != true)
             handleMouseOver();
-        }
     }
     return -1;
 }
@@ -124,7 +125,7 @@ void Game::handleMousePress()
                     closeWindow();
                 }
                 if (button->getType() == button->DOOR) {
-                    _scene = GAMEPLAY;
+                    setScene(GAMEPLAY);
                 }
             }
         }
