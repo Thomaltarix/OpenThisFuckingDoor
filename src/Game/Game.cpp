@@ -31,6 +31,11 @@ Game::Game()
     _player = new Player("assets/character/player/idle/idle_1.png", std::pair<int, int>(1000, 1000), std::pair<int, int>(14, 22));
     _gameMap = new GameMap();
     _gameMap->setupMap("assets/mapConfig/mapPresent.json", GameMap::BACKGROUND);
+    sf::Texture text;
+    text.loadFromFile("assets/minimap.png");
+    _minimap = text;
+    text.loadFromFile("assets/mapdot.png");
+    _mapdot = text;
 }
 
 Game::~Game()

@@ -51,6 +51,8 @@ class Game {
         sf::Music *getMusic() {return &_musicGame;}
         Credit *getCreditMenu() {return _credit;}
         float getVolumeMenu() {return _musicGame.getVolume();}
+
+
         //Display
         void DisplayWindow();
 
