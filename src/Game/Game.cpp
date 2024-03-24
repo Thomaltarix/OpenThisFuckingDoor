@@ -8,6 +8,7 @@
 #include "Game.hpp"
 #include "button.hpp"
 #include "Game.h"
+#include <cmath>
 
 Game::Game()
 {
@@ -20,6 +21,7 @@ Game::Game()
         throw Error("Failed to load Music");
     _musicGame.setLoop(true);
     _GameMenu = new GameMenu();
+    _OptionMenu = new OptionMenu();
     _scene = GAMEMENU;
     sf::FloatRect rect = sf::FloatRect(0, 0, 1920, 1080);
     _view = new sf::View(rect);
@@ -114,6 +116,27 @@ void Game::handleMouseOver()
             }
         }
     }
+    for (auto& button :game.getOptionMenu()->getbutton()) {
+        if (_scene == OPTION) {
+            if (button->getSprite()->getGlobalBounds().contains(mousePos)) {
+                if (button->getType() == button->AUDIOLOW) {
+                    rect = sf::IntRect(0,105,78,105);
+                    button->getSprite()->setTextureRect(rect);
+                } else if (button->getType() == button->AUDIOUP) {
+                    rect = sf::IntRect(78,105, 78,105);
+                    button->getSprite()->setTextureRect(rect);
+                }
+            } else {
+                if (button->getType() == button->AUDIOLOW) {
+                    rect = sf::IntRect(0,0,78,105);
+                    button->getSprite()->setTextureRect(rect);
+                } else if (button->getType() == button->AUDIOUP) {
+                    rect = sf::IntRect(78,0, 78,105);
+                    button->getSprite()->setTextureRect(rect);
+                }
+            }
+        }
+    }
 }
 
 void Game::handleMousePress()
@@ -132,6 +155,27 @@ void Game::handleMousePress()
                 } else {
                     rect = sf::IntRect(0,266,500,133);
                     button->getSprite()->setTextureRect(rect);
+                }
+            }
+        }
+    }
+    for (auto& button :game.getOptionMenu()->getbutton()) {
+        if (_scene == OPTION) {
+            if (button->getSprite()->getGlobalBounds().contains(mousePos)) {
+                if (button->getType() == button->AUDIOLOW) {
+                    rect = sf::IntRect(0,210,78,105);
+                    button->getSprite()->setTextureRect(rect);
+                    if (round(game.getVolumeMenu()) > 0.00) {
+                        game.setGameVolume(round(game.getVolumeMenu() - 1.00));
+                        game.getOptionMenu()->getTextVolume()->setString(std::to_string((int)round(game.getVolumeMenu())));
+                    }
+                } else if (button->getType() == button->AUDIOUP) {
+                    rect = sf::IntRect(78,210, 78,105);
+                    button->getSprite()->setTextureRect(rect);
+                    if (round(game.getVolumeMenu()) < 100) {
+                        game.setGameVolume(round(game.getVolumeMenu() + 1));
+                        game.getOptionMenu()->getTextVolume()->setString(std::to_string((int)round(game.getVolumeMenu())));
+                    }
                 }
             }
         }
@@ -159,6 +203,20 @@ void Game::handleMouseReleased()
                 if (button->getType() == button->DOOR) {
                     setScene(GAMEPLAY);
                 }
+                if (button->getType() == button->OPTION) {
+                    setScene(OPTION);
+                }
+            }
+        }
+    }
+    for (auto& button :game.getOptionMenu()->getbutton()) {
+        if (_scene == OPTION) {
+            if (button->getType() == button->AUDIOLOW) {
+                rect = sf::IntRect(0,0,78,105);
+                button->getSprite()->setTextureRect(rect);
+            } else if (button->getType() == button->AUDIOUP) {
+                rect = sf::IntRect(78,0, 78,105);
+                button->getSprite()->setTextureRect(rect);
             }
         }
     }
@@ -171,5 +229,6 @@ void Game::DisplayWindow()
 
 void Game::playMusic()
 {
+    _musicGame.setVolume(100.0);
     _musicGame.play();
 }

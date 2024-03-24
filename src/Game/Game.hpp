@@ -17,9 +17,9 @@
 
 enum Scene {
     GAMEMENU = 0,
-    OPTION,
-    CREDIT,
-    GAMEPLAY,
+    OPTION = 1,
+    CREDIT = 2,
+    GAMEPLAY = 3,
 };
 
 class Game {
@@ -45,7 +45,8 @@ class Game {
         Player *getPlayer() {return _player;}
         enum Scene getScene() {return _scene;}
         OptionMenu *getOptionMenu() {return _OptionMenu;}
-
+        sf::Music *getMusic() {return &_musicGame;}
+        float getVolumeMenu() {return _musicGame.getVolume();}
         //Display
         void DisplayWindow();
 
@@ -55,7 +56,7 @@ class Game {
 
         // Setter
         void setScene(enum Scene scene) {_scene = scene;}
-
+        void setGameVolume(float volume) {_musicGame.setVolume(volume);}
         //Music
         void playMusic();
 

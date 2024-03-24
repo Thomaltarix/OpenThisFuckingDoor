@@ -15,6 +15,10 @@ Button::Button(std::string path, std::pair<float, float> pos, std::pair<float, f
     _sprite.setTexture(_texture);
     if (type == DOOR) {
         _sprite.setTextureRect(sf::IntRect(0,0,72,66));
+    } else if (type == AUDIOLOW) {
+        _sprite.setTextureRect(sf::IntRect(0,0,78,105));
+    } else if (type == AUDIOUP) {
+        _sprite.setTextureRect(sf::IntRect(78,0, 78,105));
     } else {
         _sprite.setTextureRect(sf::IntRect(0,0,500,128));
     }
