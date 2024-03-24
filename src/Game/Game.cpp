@@ -72,6 +72,8 @@ int Game::getKeyEvent()
         }
         if (_event.type == sf::Event::MouseMoved && state != true)
             handleMouseOver();
+        if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && !sf::Keyboard::isKeyPressed(sf::Keyboard::S) && !sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+            game.getPlayer()->data["direction"] = IDLE;
     }
     return -1;
 }

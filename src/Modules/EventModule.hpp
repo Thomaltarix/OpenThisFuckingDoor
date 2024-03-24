@@ -14,7 +14,7 @@ class EventModule : public Module {
         EventModule(GameObject *gameObject);
         ~EventModule() = default;
 
-        void update(GameObject *gameObject, std::vector<GameObject*> gameObjects) override {(void) gameObject, (void) gameObjects;};
+        void update(GameObject *gameObject, std::vector<GameObject*> gameObjects) override;
         void setEventEffect(GameObject *gameobject, std::function<void(GameObject *, GameObject *)> funk);
     private:
 };

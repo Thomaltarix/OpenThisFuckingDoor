@@ -15,6 +15,7 @@ SRC			= 	src/main.cpp \
 				src/Modules/RotatableModule.cpp \
 				src/Modules/PositionModule.cpp \
 				src/Modules/PlayerModule.cpp \
+				src/Modules/EventModule.cpp \
 				src/GameMenu/GameMenu.cpp \
 				src/button/button.cpp \
 				src/Player.cpp \

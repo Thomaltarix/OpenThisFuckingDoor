@@ -59,6 +59,12 @@ class Game {
         //Music
         void playMusic();
 
+        // Player Movement
+        void movePlayer(enum Direction dir) {
+            if (dir == IDLE || std::any_cast<Direction>(_player->data["direction"]) == IDLE)
+                _player->data["direction"] = dir;
+        }
+
         class Error : public std::exception {
             public:
                 Error (const std::string &msg)
@@ -84,6 +90,10 @@ class Game {
         enum Scene _scene;
 
         std::unordered_map<sf::Keyboard::Key, std::function<void()>> _keyFunctions = {
-            {sf::Keyboard::Escape, [this](){setScene(GAMEMENU);}}
+            {sf::Keyboard::Escape, [this](){setScene(GAMEMENU);}},
+            {sf::Keyboard::Z, [this](){movePlayer((enum Direction)UP);}},
+            {sf::Keyboard::S, [this](){movePlayer((enum Direction)DOWN);}},
+            {sf::Keyboard::Q, [this](){movePlayer((enum Direction)LEFT);}},
+            {sf::Keyboard::D, [this](){movePlayer((enum Direction)RIGHT);}}
         };
 };
