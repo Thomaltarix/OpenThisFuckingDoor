@@ -28,6 +28,10 @@ SRC			= 	src/main.cpp \
 				src/Totem/Totem.cpp \
 				src/Door/Door.cpp \
 				src/Pillar/Pillar.cpp \
+				src/Warp/Warp_futur.cpp \
+				src/Warp/Warp_past.cpp \
+				src/Warp/Warp_present.cpp \
+				src/Warp/Warp.cpp \
 
 CXX_OBJS			= $(SRC:.cpp=.o)
 
