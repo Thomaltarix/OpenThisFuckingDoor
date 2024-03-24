@@ -14,14 +14,15 @@
 
 Player::Player(std::string str, std::pair<int, int> pos, std::pair<int, int> size)
 {
-    enum Direction dir = RIGHT;
+    Direction dir = RIGHT;
     addModule<PlayerModule>();
     data["texture"] = str;
     data["x"] = pos.first;
     data["y"] = pos.second;
     data["TextureSize"] = size;
-    data["speed"] = int(7);
+    data["speed"] = int(15);
     data["direction"] = dir;
+    data["size"] = std::pair<int, int>(5, 5);
 }
 
 void Player::displayPlayer(void)

@@ -18,6 +18,8 @@ DisplayModule::DisplayModule(GameObject *gameObject)
 {
     if (gameObject->hasModule<DisplayModule>())
         throw Error("GameObject already has a DisplayModule!");
+    if (!gameObject->hasModule<PositionModule>())
+        gameObject->addModule<PositionModule>();
     if (gameObject->data.find("sfTexture") == gameObject->data.end())
         gameObject->data["sfTexture"] = sf::Texture();
     if (gameObject->data.find("TextureSize") == gameObject->data.end())
@@ -28,7 +30,7 @@ DisplayModule::DisplayModule(GameObject *gameObject)
 
 std::string getDir(void)
 {
-    enum Direction dir = std::any_cast<enum Direction>(game.getPlayer()->data["direction"]);
+    Direction dir = game.getPlayer()->data.find("direction") != game.getPlayer()->data.end() ? std::any_cast<Direction>(game.getPlayer()->data["direction"]) : IDLE;
 
     if (dir == UP)
         return ("walk_back/walk_back_");
@@ -70,12 +72,14 @@ void DisplayModule::update(GameObject *gameObject, std::vector<GameObject*> game
     (void)gameObjects;
     GameObject *player = game.getPlayer();
 #define threshold 480
-    if (gameObject != player)
+    if (gameObject != player) {
         if (!(std::any_cast<int>(gameObject->data["x"]) + threshold > std::any_cast<int>(player->data["x"]) &&
         std::any_cast<int>(gameObject->data["x"]) - threshold < std::any_cast<int>(player->data["x"]) &&
         std::any_cast<int>(gameObject->data["y"]) + threshold > std::any_cast<int>(player->data["y"]) &&
-        std::any_cast<int>(gameObject->data["y"]) - threshold < std::any_cast<int>(player->data["y"])))
+        std::any_cast<int>(gameObject->data["y"]) - threshold < std::any_cast<int>(player->data["y"]))) {
             return;
+        }
+    }
     if (gameObject->hasModule<PlayerModule>()) {
         tex.loadFromFile(animation());
         sprite.setTexture(tex, false);

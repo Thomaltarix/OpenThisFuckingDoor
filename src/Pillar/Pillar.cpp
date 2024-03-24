@@ -7,7 +7,6 @@
 
 #include "Pillar.hpp"
 #include <HitboxModule.hpp>
-#include <MovementModule.hpp>
 #include "Game.h"
 #include <Game.hpp>
 #include "GameObject.hpp"

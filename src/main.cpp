@@ -23,6 +23,33 @@ void displayMap(Map map)
     }
 }
 
+template<typename T>
+static std::vector<T*> tab2vector(std::vector<std::vector<T*>> tab)
+{
+    std::vector<T*> vector;
+
+    for (auto elem : tab) {
+        for (auto elem2 : elem) {
+            vector.push_back(elem2);
+        }
+    }
+    return vector;
+}
+
+static void doubleCheck(std::vector<GameObject *> vector)
+{
+    for (auto elem : vector) {
+        if (elem->data.find("x") == elem->data.end())
+            elem->data["x"] = 0;
+        if (elem->data.find("y") == elem->data.end())
+            elem->data["y"] = 0;
+        if (elem->data.find("direction") == elem->data.end())
+            elem->data["direction"] = IDLE;
+        if (elem->data.find("direction") == elem->data.end())
+            elem->data["size"] = std::pair<int, int>(0, 0);
+    }
+}
+
 int main(int argc, char **argv)
 {
     int event;
@@ -31,6 +58,22 @@ int main(int argc, char **argv)
 
     game.playMusic();
     game.setTimeLine(GameMap::TimeLine::PRESENT);
+
+    std::vector<GameObject *> vecpr;
+    vecpr = tab2vector<GameObject>(game.getGameMap()->getMap(GameMap::TimeLine::PRESENT).second);
+    vecpr.push_back(game.getPlayer());
+    doubleCheck(tab2vector<GameObject>(game.getGameMap()->getMap(GameMap::TimeLine::PRESENT).second));
+
+    std::vector<GameObject *> vecpa;
+    vecpa = tab2vector<GameObject>(game.getGameMap()->getMap(GameMap::TimeLine::PAST).second);
+    vecpa.push_back(game.getPlayer());
+    doubleCheck(tab2vector<GameObject>(game.getGameMap()->getMap(GameMap::TimeLine::PAST).second));
+
+    std::vector<GameObject *> vecf;
+    vecf = tab2vector<GameObject>(game.getGameMap()->getMap(GameMap::TimeLine::FUTUR).second);
+    vecf.push_back(game.getPlayer());
+    doubleCheck(tab2vector<GameObject>(game.getGameMap()->getMap(GameMap::TimeLine::FUTUR).second));
+
     while (game.isWindowOpen()) {
         event = game.getKeyEvent();
         game.clearWindow();
@@ -41,9 +84,7 @@ int main(int argc, char **argv)
         if (game.getScene() == GAMEPLAY) {
             displayMap(game.getGameMap()->getMap(game.getTimeLine()).first);
             displayMap(game.getGameMap()->getMap(game.getTimeLine()).second);
-            std::vector<GameObject *> caca;
-            caca.push_back(game.getPlayer());
-            game.getPlayer()->update(caca);
+            game.getPlayer()->update(game.getTimeLine() == GameMap::TimeLine::PRESENT ? vecpr : game.getTimeLine() == GameMap::TimeLine::PAST ? vecpa : vecf);
             game.getPlayer()->displayPlayer();
         }
         if (game.getScene() == CREDIT)

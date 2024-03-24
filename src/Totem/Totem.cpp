@@ -6,7 +6,6 @@
 */
 
 #include <HitboxModule.hpp>
-#include <MovementModule.hpp>
 #include "Totem.hpp"
 #include "Game.h"
 #include <Game.hpp>
@@ -34,4 +33,5 @@ Totem::Totem(std::string str, std::pair<int, int> pos, std::pair<int, int> size)
     data["TextureSize"] = size;
     data["actionEffect"] = &totem_action;
     data["isTotem"] = true;
+    data["size"] = std::pair<int, int>(5, 5);
 }

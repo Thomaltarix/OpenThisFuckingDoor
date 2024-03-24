@@ -7,6 +7,8 @@
 
 #include "MovementModule.hpp"
 #include "PositionModule.hpp"
+#include "CollisionModule.hpp"
+#include "HitboxModule.hpp"
 #include <cmath>
 
 MovementModule::MovementModule(GameObject *gameObject)
@@ -31,18 +33,41 @@ void MovementModule::setSpeed(GameObject *gameObject, int speed)
     gameObject->data["speed"] = speed;
 }
 
+static bool checkAllColision(GameObject *gameObject, std::vector<GameObject*> gameObjects)
+{
+    if (!gameObject->hasModule<CollisionModule>())
+        return false;
+    for (auto other : gameObjects) {
+        if (!other->hasModule<CollisionModule>())
+            continue;
+        if (HitboxModule::contact(gameObject, other)) {
+            return true;
+        }
+
+    }
+    return false;
+}
+
 void MovementModule::update(GameObject *gameObject, std::vector<GameObject*> gameObjects)
 {
     (void) gameObjects;
 
-    if (std::any_cast<Direction>(gameObject->data["direction"]) == IDLE)
+    Direction dir = std::any_cast<Direction>(gameObject->data["direction"]);
+    if (dir == IDLE)
         return;
-    if (std::any_cast<Direction>(gameObject->data["direction"]) == UP)
-        gameObject->data["y"] = std::any_cast<int>(gameObject->data["y"]) - std::any_cast<int>(gameObject->data["speed"]);
-    if (std::any_cast<Direction>(gameObject->data["direction"]) == DOWN)
-        gameObject->data["y"] = std::any_cast<int>(gameObject->data["y"]) + std::any_cast<int>(gameObject->data["speed"]);
-    if (std::any_cast<Direction>(gameObject->data["direction"]) == LEFT)
-        gameObject->data["x"] = std::any_cast<int>(gameObject->data["x"]) - std::any_cast<int>(gameObject->data["speed"]);
-    if (std::any_cast<Direction>(gameObject->data["direction"]) == RIGHT)
-        gameObject->data["x"] = std::any_cast<int>(gameObject->data["x"]) + std::any_cast<int>(gameObject->data["speed"]);
+    int y = std::any_cast<int>(gameObject->data["y"]);
+    int x = std::any_cast<int>(gameObject->data["x"]);
+    int speed = std::any_cast<int>(gameObject->data["speed"]);
+    if (dir == UP)
+        gameObject->data["y"] = y - speed;
+    if (dir == DOWN)
+        gameObject->data["y"] = y + speed;
+    if (dir == LEFT)
+        gameObject->data["x"] = x - speed;
+    if (dir == RIGHT)
+        gameObject->data["x"] = x + speed;
+    if (checkAllColision(gameObject, gameObjects)) {
+       gameObject->data["x"] = x;
+       gameObject->data["y"] = y;
+    }
 }
