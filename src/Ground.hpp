@@ -13,9 +13,8 @@
 
 class Ground : public GameObject {
     public:
-        Ground(sf::Texture, std::pair<int, int>, std::pair<int, int>);
+        Ground(std::string, std::pair<int, int>, std::pair<int, int>);
         ~Ground() = default;
-
 
         // Getters
         sf::Texture getTexture(void) {return std::any_cast<sf::Texture>(data["texture"]);}

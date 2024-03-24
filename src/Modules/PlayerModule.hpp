@@ -17,5 +17,7 @@ class PlayerModule : public Module {
     public:
         PlayerModule(GameObject *gameObject);
         ~PlayerModule() = default;
+
+        void update(GameObject *gameObject, std::vector<GameObject*> gameObjects) override {(void) gameObject, (void) gameObjects;};
     private:
 };

@@ -12,6 +12,7 @@
 #include <unordered_map>
 #include <functional>
 #include "../GameMenu/GameMenu.hpp"
+#include "Player.hpp"
 
 class Game {
     public:
@@ -31,6 +32,7 @@ class Game {
         // Getter
         sf::RenderWindow &getWindow() {return _window;}
         GameMenu *getGameMenu() {return _GameMenu;}
+        Player *getPlayer() {return _player;}
 
         //Display
         void DisplayWindow();
@@ -62,6 +64,7 @@ class Game {
         sf::Event _event;
         sf::Music _musicGame;
         GameMenu *_GameMenu;
+        Player *_player;
 
         std::unordered_map<sf::Keyboard::Key, std::function<void()>> _keyFunctions = {
             {sf::Keyboard::Escape, [this](){closeWindow();}}
