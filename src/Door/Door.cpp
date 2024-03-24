@@ -20,7 +20,7 @@ Door::Door(std::string str, std::pair<int, int> pos, std::pair<int, int> size)
     sf::Texture text;
     text.loadFromFile("./assets/Door/door_1.png");
     data["sfTexture"] = text;
-    data["x"] = pos.first;
-    data["y"] = pos.second;
+    data["x"] = pos.first - 22;
+    data["y"] = pos.second + 400;
     data["TextureSize"] = std::pair<int, int>(126, 131);
 }

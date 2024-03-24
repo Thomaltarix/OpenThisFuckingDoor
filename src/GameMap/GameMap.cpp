@@ -15,6 +15,9 @@
 #include "../Totem/Totem.hpp"
 #include "../Door/Door.hpp"
 #include "../Pillar/Pillar.hpp"
+#include "../Warp/Warp_present.hpp"
+#include "../Warp/Warp_futur.hpp"
+#include "../Warp/Warp_past.hpp"
 #include "Game.h"
 
 GameMap::GameMap()
@@ -86,9 +89,12 @@ GameObject *GameMap::getGameObject(int x, int y, std::string path, MapType type,
         return new Door(path, std::pair<int, int>(x * 100, y * 100), std::pair<int, int>(100, 100));
     if (objectType == "Pillar")
         return new Pillar(path, std::pair<int, int>(x * 100, y * 100), std::pair<int, int>(100, 100));
-    // Not implemented yet
-    // if (objectType == "Warp")
-    //     return new Warp(path, std::pair<int, int>(x * 100, y * 100), std::pair<int, int>(100, 100));
+    if (objectType == "Warp_present")
+        return new Warp_present(path, std::pair<int, int>(x * 100, y * 100), std::pair<int, int>(94, 72));
+    if (objectType == "Warp_futur")
+        return new Warp_present(path, std::pair<int, int>(x * 100, y * 100), std::pair<int, int>(94, 72));
+    if (objectType == "Warp_past")
+        return new Warp_present(path, std::pair<int, int>(x * 100, y * 100), std::pair<int, int>(94, 72));
     return new GameObject();
 }
 

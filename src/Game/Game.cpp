@@ -34,7 +34,7 @@ Game::Game()
     sf::FloatRect rect = sf::FloatRect(0, 0, 1920, 1080);
     _view = new sf::View(rect);
     game.getWindow().setView(*_view);
-    _player = new Player("assets/character/player/idle/idle_1.png", std::pair<int, int>(5000, 5000), std::pair<int, int>(13, 21));
+    _player = new Player("assets/character/player/idle/idle_1.png", std::pair<int, int>(4922, 5575), std::pair<int, int>(13, 21));
 }
 
 Game::~Game()
