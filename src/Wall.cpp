@@ -21,6 +21,9 @@ Wall::Wall(std::string str, std::pair<int, int> pos, std::pair<int, int> size)
     addModule<CollisionModule>();
     addModule<DisplayModule>();
     data["texture"] = texture;
+    sf::Texture text;
+    text.loadFromFile(str);
+    data["sfTexture"] = text;
     data["x"] = pos.first;
     data["y"] = pos.second;
     data["TextureSize"] = size;

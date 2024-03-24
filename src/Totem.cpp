@@ -24,6 +24,9 @@ Totem::Totem(std::string str, std::pair<int, int> pos, std::pair<int, int> size)
     addModule<InteractionModule>();
     addModule<DisplayModule>();
     data["texture"] = str;
+    sf::Texture text;
+    text.loadFromFile("./assets/totem.png");
+    data["sfTexture"] = text;
     data["x"] = pos.first;
     data["y"] = pos.second;
     data["TextureSize"] = size;
