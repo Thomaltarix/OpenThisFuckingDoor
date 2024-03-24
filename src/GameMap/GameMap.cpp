@@ -10,11 +10,11 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <fstream>
-#include "Ground.hpp"
-#include "Wall.hpp"
-#include "Totem.hpp"
-#include "Door.hpp"
-#include "Pillar.hpp"
+#include "../Ground/Ground.hpp"
+#include "../Wall/Wall.hpp"
+#include "../Totem/Totem.hpp"
+#include "../Door/Door.hpp"
+#include "../Pillar/Pillar.hpp"
 #include "Game.h"
 
 GameMap::GameMap()
