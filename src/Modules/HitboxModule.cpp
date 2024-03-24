@@ -22,6 +22,8 @@ HitboxModule::HitboxModule(GameObject *gameObject)
 
 bool HitboxModule::contact(GameObject *gameObject, GameObject *otherObject)
 {
+    if (!gameObject->hasModule<HitboxModule>() || !otherObject->hasModule<HitboxModule>())
+        return (false);
     if (gameObject != otherObject) {
         double distance = calculateDistance(gameObject, otherObject);
         if (distance - 0.01 < 0)
