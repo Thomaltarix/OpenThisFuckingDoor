@@ -24,6 +24,7 @@ class GameMap {
         ~GameMap();
 
         std::tuple<Map, Map> getMaps();
+        void setupMap(std::string content, MapType type);
 
         class Error : public std::exception {
             public:
@@ -43,7 +44,7 @@ class GameMap {
     private:
         std::pair<Map, Map> _maps;
 
-        void fillMapFromJson(std::string content, MapType type);
-        GameObject *getGameObject(int x, int y, std::string path, MapType type);
+        GameObject *getGameObject(int x, int y, std::string path, MapType type, json tileSet, int tile);
         std::string getPath(json tileSet, int tile);
+        std::string getObjectType(json tileSet, int tile);
 };

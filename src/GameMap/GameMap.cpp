@@ -20,8 +20,10 @@ std::tuple<Map, Map> GameMap::getMaps()
     return _maps;
 }
 
-void GameMap::fillMapFromJson(std::string path, MapType type)
+void GameMap::setupMap(std::string path, MapType type)
 {
+    if (path == "")
+        return;
     std::ifstream f(path.c_str());
     json data = json::parse(f);
 
@@ -41,20 +43,28 @@ void GameMap::fillMapFromJson(std::string path, MapType type)
         }
         if (row == data["width"])
             return;
-        GameObject *object = getGameObject(col, row, getPath(data["tilesets"], tile.get<int>()), type);
+        GameObject *object = getGameObject(col, row, getPath(data["tilesets"], tile.get<int>()), type, data["tilesets"], tile.get<int>());
         list.push_back(object);
         col++;
     }
 }
 
-GameObject *GameMap::getGameObject(int x, int y, std::string path, MapType type)
+GameObject *GameMap::getGameObject(int x, int y, std::string path, MapType type, json tileSet, int tile)
 {
+    // Not implemented yet
+    // if (type == BACKGROUND)
+    //     return new Ground(x, y, path);
+    std::string objectType = getObjectType(tileSet, tile);
+    // Not implemented yet
+    // if (objectType == "Player")
+    //     return new Player(x, y, path);
+    // if (objectType == "Wall")
+    //     return new Wall(x, y, path);
     (void) x;
     (void) y;
     (void) path;
     (void) type;
-    GameObject *object = new GameObject();
-    return object;
+    return new GameObject();
 }
 
 std::string GameMap::getPath(json tileSet, int tile)
@@ -62,6 +72,16 @@ std::string GameMap::getPath(json tileSet, int tile)
     for (auto& tileData : tileSet) {
         if (tileData["firstgid"] == tile) {
             return "./assets/" + tileData["image"].get<std::string>();
+        }
+    }
+    return "";
+}
+
+std::string GameMap::getObjectType(json tileSet, int tile)
+{
+    for (auto& tileData : tileSet) {
+        if (tileData["firstgid"] == tile) {
+            return tileData["type"].get<std::string>();
         }
     }
     return "";
