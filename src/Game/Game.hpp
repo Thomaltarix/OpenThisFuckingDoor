@@ -90,10 +90,6 @@ class Game {
         enum Scene _scene;
 
         std::unordered_map<sf::Keyboard::Key, std::function<void()>> _keyFunctions = {
-            {sf::Keyboard::Escape, [this](){setScene(GAMEMENU);}},
-            {sf::Keyboard::Z, [this](){movePlayer((enum Direction)UP);}},
-            {sf::Keyboard::S, [this](){movePlayer((enum Direction)DOWN);}},
-            {sf::Keyboard::Q, [this](){movePlayer((enum Direction)LEFT);}},
-            {sf::Keyboard::D, [this](){movePlayer((enum Direction)RIGHT);}}
+            {sf::Keyboard::Escape, [this](){setScene(GAMEMENU);}}
         };
 };
