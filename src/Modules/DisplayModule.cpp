@@ -68,14 +68,24 @@ void DisplayModule::update(GameObject *gameObject, std::vector<GameObject*> game
     sf::Texture tex;
 
     (void)gameObjects;
+    GameObject *player = game.getPlayer();
+#define threshold 480
+    if (gameObject != player)
+        if (!(std::any_cast<int>(gameObject->data["x"]) + threshold > std::any_cast<int>(player->data["x"]) &&
+        std::any_cast<int>(gameObject->data["x"]) - threshold < std::any_cast<int>(player->data["x"]) &&
+        std::any_cast<int>(gameObject->data["y"]) + threshold > std::any_cast<int>(player->data["y"]) &&
+        std::any_cast<int>(gameObject->data["y"]) - threshold < std::any_cast<int>(player->data["y"])))
+            return;
     if (gameObject->hasModule<PlayerModule>()) {
         tex.loadFromFile(animation());
         sprite.setTexture(tex, false);
+        sprite.setScale(3, 3);
     } else {
         tex = std::any_cast<sf::Texture>(gameObject->data["sfTexture"]);
         sprite.setTexture(tex, false);
     }
     std::pair<int, int> size = std::any_cast<std::pair<int, int>>(gameObject->data["TextureSize"]);
     sprite.setTextureRect(sf::IntRect(0, 0, size.first, size.second));
+    sprite.setPosition(std::any_cast<int>(gameObject->data["x"]), std::any_cast<int>(gameObject->data["y"]));
     game.getWindow().draw(sprite);
 }

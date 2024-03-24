@@ -13,7 +13,7 @@
 Game::Game()
 {
     _window.create(sf::VideoMode(1920, 1080), "OpenThisFuckingDoor", sf::Style::Close | sf::Style::Fullscreen);
-    _window.setFramerateLimit(60);
+    //_window.setFramerateLimit(60);
     if (!isWindowOpen())
         throw Error("Failed to create window");
     _event = sf::Event();
@@ -26,7 +26,7 @@ Game::Game()
     sf::FloatRect rect = sf::FloatRect(0, 0, 1920, 1080);
     _view = new sf::View(rect);
     game.getWindow().setView(*_view);
-    _player = new Player("assets/character/player/idle/idle_1.png", std::pair<int, int>(500, 500), std::pair<int, int>(21, 13));
+    _player = new Player("assets/character/player/idle/idle_1.png", std::pair<int, int>(1000, 1000), std::pair<int, int>(14, 22));
     _gameMap = new GameMap();
     _gameMap->setupMap("assets/mapConfig/mapPresent.json", GameMap::BACKGROUND);
 }

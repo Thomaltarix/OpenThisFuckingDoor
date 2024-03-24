@@ -49,17 +49,12 @@ void GameMap::setupMap(std::string path, MapType type)
         list.push_back(object);
         col++;
     }
-    //for (auto& elem : _maps.first) {
-    //    for (auto& elem2 : elem) {
-    //        void(elem2);
-    //    }
-    //}
 }
 
 GameObject *GameMap::getGameObject(int x, int y, std::string path, MapType type, json tileSet, int tile)
 {
     if (type == BACKGROUND) {
-        return new Ground(path, std::pair<int, int>(x * 50, y * 50), std::pair<int, int>(50, 50));
+        return new Ground(path, std::pair<int, int>(x * 100, y * 100), std::pair<int, int>(100, 100));
     }
     std::string objectType = getObjectType(tileSet, tile);
     // Not implemented yet
