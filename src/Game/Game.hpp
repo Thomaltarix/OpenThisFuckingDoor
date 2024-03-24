@@ -47,6 +47,10 @@ class Game {
         //Display
         void DisplayWindow();
 
+        // View
+        void setView(sf::View *view) {_view = view;}
+        sf::View *getView(void) {return _view;}
+
         //Music
         void playMusic();
 
@@ -66,6 +70,7 @@ class Game {
         };
     private:
         sf::RenderWindow _window;
+        sf::View *_view;
         sf::Event _event;
         sf::Music _musicGame;
         GameMenu *_GameMenu;

@@ -21,6 +21,9 @@ Game::Game()
     _musicGame.setLoop(true);
     _GameMenu = new GameMenu();
     _scene = GAMEMENU;
+    sf::FloatRect rect = sf::FloatRect(0, 0, 1920, 1080);
+    _view = new sf::View(rect);
+    game.getWindow().setView(*_view);
 }
 
 Game::~Game()
