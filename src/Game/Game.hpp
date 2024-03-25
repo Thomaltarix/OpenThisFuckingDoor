@@ -111,6 +111,10 @@ class Game {
             {sf::Keyboard::U, [this](){setTimeLine(GameMap::TimeLine::PAST);}},
             {sf::Keyboard::I, [this](){setTimeLine(GameMap::TimeLine::PRESENT);}},
             {sf::Keyboard::O, [this](){setTimeLine(GameMap::TimeLine::FUTUR);}},
+            {sf::Keyboard::E, [this](){getTotem();}},
+            {sf::Keyboard::F, [this](){setTotem(1);}},
+            {sf::Keyboard::G, [this](){setTotem(2);}},
+            {sf::Keyboard::H, [this](){setTotem(3);}},
         };
 
         void setupFilters(void);
